@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="but_main_col">#FFFFFF</color>
+    <color name="main_col">#3772E7</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="main_but_height">220dp</dimen>
+    <dimen name="main_but_width">328dp</dimen>
+    <string name="app_name">Playlist Maker</string>
+    <string name="dark_style">Тёмная тема</string>
+    <string name="library">Медиатека</string>
+    <string name="offer">Пользовательское соглашение</string>
+    <string name="search">Поиск</string>
+    <string name="settings">Настройки</string>
+    <string name="share">Поделиться приложением</string>
+    <string name="support">Написать в поддержку</string>
+    <string name="title">Playlist Maker</string>
+    <style name="Theme.PlaylistMaker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        
+    </style>
+    <style name="some_id">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#1A1B22</item>
+    </style>
+    <style name="title">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>
