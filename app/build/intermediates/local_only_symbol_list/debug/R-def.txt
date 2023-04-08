@@ -30,6 +30,8 @@ id button6
 id switch2
 id title
 layout activity_main
+layout activity_mediateca
+layout activity_search
 layout activity_settings
 mipmap ic_launcher
 mipmap ic_launcher_round
