@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="main_but_width">328dp</dimen>
-    <dimen name="main_but_height">220dp</dimen>
+    <dimen name="setting_but_radius">16dp</dimen>
+    <dimen name="icon_but_padding">8dp</dimen>
+    <dimen name="main_but_text_size">22sp</dimen>
+    <dimen name="setting_but_padding_left">16dp</dimen>
+    <dimen name="setting_but_padding_right">12dp</dimen>
+    <dimen name="setting_text_padding_top_and_bottom">12dp</dimen>
+    <dimen name="main_but_margin_left_and_right">16dp</dimen>
+    <dimen name="setting_but_text_size">16sp</dimen>
+    <dimen name="setting_but_text_end">16dp</dimen>
+    <dimen name="setting_but_text_width">0dp</dimen>
+    <dimen name="setting_but_text_vertical">21dp</dimen>
+
+
+
 </resources>

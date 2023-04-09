@@ -38,14 +38,14 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Valentin\\Playlist-Maker\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\Users\\Valentin\\Playlist-Maker-dev\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "102",
+                        "startOffsets": "100",
                         "endLines": "14",
                         "endColumns": "12",
-                        "endOffsets": "816"
+                        "endOffsets": "802"
                     },
                     "to": {
                         "startLines": "33",

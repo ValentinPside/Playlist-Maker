@@ -1,15 +1,11 @@
 [
     {
-        "merged": "com.example.playlistmaker.app-merged_res-5:/layout_activity_search.xml.flat",
-        "source": "com.example.playlistmaker.app-main-7:/layout/activity_search.xml"
+        "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-mdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\xml_backup_rules.xml.flat",
@@ -52,6 +48,10 @@
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_mediateca.xml.flat",
+        "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\layout\\activity_mediateca.xml"
+    },
+    {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
@@ -62,10 +62,6 @@
     {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "com.example.playlistmaker.app-merged_res-5:/layout_activity_mediateca.xml.flat",
-        "source": "com.example.playlistmaker.app-main-7:/layout/activity_mediateca.xml"
     },
     {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_support.xml.flat",
@@ -88,6 +84,10 @@
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\vector.xml"
     },
     {
+        "merged": "com.example.playlistmaker.app-merged_res-5:/layout_activity_settings.xml.flat",
+        "source": "com.example.playlistmaker.app-main-7:/layout/activity_settings.xml"
+    },
+    {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_search.xml.flat",
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\search.xml"
     },
@@ -96,12 +96,20 @@
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\share.xml"
     },
     {
+        "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_search.xml.flat",
+        "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\layout\\activity_search.xml"
+    },
+    {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_back.xml.flat",
+        "source": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\back.xml"
     },
     {
         "merged": "C:\\Users\\н\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\xml_data_extraction_rules.xml.flat",

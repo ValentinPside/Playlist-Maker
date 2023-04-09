@@ -1761,6 +1761,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color settings_icon_color
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
 color switch_thumb_material_dark
@@ -1931,6 +1932,7 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen icon_but_padding
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
@@ -2091,6 +2093,8 @@ dimen m3_sys_typescale_title_small_text_size
 dimen m3_timepicker_display_stroke_width
 dimen m3_timepicker_window_elevation
 dimen main_but_height
+dimen main_but_margin_left_and_right
+dimen main_but_text_size
 dimen main_but_width
 dimen material_bottom_sheet_max_width
 dimen material_clock_display_padding
@@ -2339,6 +2343,10 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen setting_but_padding_left
+dimen setting_but_padding_right
+dimen setting_but_radius
+dimen setting_but_text_size
 dimen test_dimen
 dimen test_mtrl_calendar_day_cornerSize
 dimen test_navigation_bar_active_item_max_width
@@ -2441,6 +2449,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable back
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2615,7 +2624,6 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
-id button
 id button1
 id button2
 id button3
@@ -2890,6 +2898,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id settings_toolbar
 id sharedValueSet
 id sharedValueUnset
 id shortcut

@@ -9,62 +9,68 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="134dp"
-        android:layout_height="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/title"
-        android:textAppearance="@style/title"
-        android:gravity="top" />
+        android:textAppearance="@style/title"/>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/button1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/main_but_margin_left_and_right"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="@dimen/main_but_margin_left_and_right"
+        android:layout_weight="1"
+        android:backgroundTint="@color/but_main_col"
+        android:text="@string/search"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/main_but_text_size"
+        app:cornerRadius="@dimen/setting_but_radius"
+        app:icon="@drawable/search"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/icon_but_padding"
+        app:iconTint="@color/black" />
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/but_main_col"
-            android:text="@string/search"
-            android:textColor="@color/black"
-            app:cornerRadius="25dp"
-            app:icon="@drawable/search"
-            app:iconGravity="textStart"
-            app:iconPadding="1dp"
-            app:iconTint="@color/black" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/main_but_margin_left_and_right"
+        android:layout_marginRight="@dimen/main_but_margin_left_and_right"
+        android:layout_weight="1"
+        android:backgroundTint="@color/but_main_col"
+        android:text="@string/library"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/main_but_text_size"
+        app:cornerRadius="@dimen/setting_but_radius"
+        app:icon="@drawable/library"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/icon_but_padding"
+        app:iconTint="@color/black" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/but_main_col"
-            android:text="@string/library"
-            android:textColor="@color/black"
-            app:cornerRadius="25dp"
-            app:icon="@drawable/library"
-            app:iconGravity="textStart"
-            app:iconPadding="1dp"
-            app:iconTint="@color/black" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/main_but_margin_left_and_right"
+        android:layout_marginRight="@dimen/main_but_margin_left_and_right"
+        android:layout_marginBottom="28dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/but_main_col"
+        android:text="@string/settings"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/main_but_text_size"
+        app:cornerRadius="@dimen/setting_but_radius"
+        app:icon="@drawable/settings"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/icon_but_padding"
+        app:iconTint="@color/black" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/but_main_col"
-            android:text="@string/settings"
-            android:textColor="@color/black"
-            app:cornerRadius="25dp"
-            app:icon="@drawable/settings"
-            app:iconGravity="textStart"
-            app:iconPadding="1dp"
-            app:iconTint="@color/black" />
-
-    </LinearLayout>
 </LinearLayout>

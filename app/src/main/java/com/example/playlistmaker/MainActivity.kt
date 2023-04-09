@@ -8,6 +8,10 @@ import android.widget.Button
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+    private fun navigateTo(clazz: Class<out AppCompatActivity>) {
+        val intent = Intent(this, clazz)
+        startActivity(intent)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,16 +21,13 @@ class MainActivity : AppCompatActivity() {
         val settingsButton = findViewById<Button>(R.id.button3)
 
         mediatecaButton.setOnClickListener {
-            val displayIntent = Intent(this, Mediateca::class.java)
-            startActivity(displayIntent)
+            navigateTo(Mediateca::class.java)
         }
         searchButton.setOnClickListener {
-            val displayIntent = Intent(this, Search::class.java)
-            startActivity(displayIntent)
+            navigateTo(Search::class.java)
         }
         settingsButton.setOnClickListener {
-            val displayIntent = Intent(this, Settings::class.java)
-            startActivity(displayIntent)
+            navigateTo(Settings::class.java)
         }
     }
 }
