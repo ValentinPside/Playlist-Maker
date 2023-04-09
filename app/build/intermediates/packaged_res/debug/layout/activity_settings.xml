@@ -29,60 +29,81 @@
         android:id="@+id/switch2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:paddingLeft="@dimen/setting_but_padding_left"
         android:paddingRight="@dimen/setting_but_padding_right"
+        android:paddingTop="@dimen/setting_text_padding_top_and_bottom"
+        android:paddingBottom="@dimen/setting_text_padding_top_and_bottom"
         android:text="@string/dark_style"
         android:textAlignment="viewStart"
         android:textSize="@dimen/setting_but_text_size"
         tools:ignore="UseSwitchCompatOrMaterialXml"/>
 
-    <Button
-        android:id="@+id/button4"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/setting_but_padding_left"
-        android:paddingRight="@dimen/setting_but_padding_right"
-        android:backgroundTint="@color/but_main_col"
-        android:text="@string/share"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="@dimen/setting_but_text_size"
-        app:icon="@drawable/share"
-        app:iconGravity="end"
-        app:iconTint="@color/settings_icon_color" />
+        android:paddingStart="@dimen/setting_but_padding_left"
+        android:paddingEnd="@dimen/setting_but_padding_right">
+        <TextView
+            android:layout_width="@dimen/setting_but_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/setting_but_text_end"
+            android:layout_weight="1"
+            android:layout_marginVertical="@dimen/setting_but_text_vertical"
+            android:text="@string/share"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_but_text_size" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/share"
+            app:tint="@color/settings_icon_color" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/button5"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/setting_but_padding_left"
-        android:paddingRight="@dimen/setting_but_padding_right"
-        android:backgroundTint="@color/but_main_col"
-        android:text="@string/support"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="@dimen/setting_but_text_size"
-        app:icon="@drawable/support"
-        app:iconGravity="end"
-        app:iconTint="@color/settings_icon_color" />
+        android:paddingStart="@dimen/setting_but_padding_left"
+        android:paddingEnd="@dimen/setting_but_padding_right">
+        <TextView
+            android:layout_width="@dimen/setting_but_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/setting_but_text_end"
+            android:layout_weight="1"
+            android:layout_marginVertical="@dimen/setting_but_text_vertical"
+            android:text="@string/support"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_but_text_size" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/support"
+            app:tint="@color/settings_icon_color" />
 
-    <Button
-        android:id="@+id/button6"
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/setting_but_padding_left"
-        android:paddingRight="@dimen/setting_but_padding_right"
-        android:backgroundTint="@color/but_main_col"
-        android:text="@string/offer"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="@dimen/setting_but_text_size"
-        app:icon="@drawable/forward"
-        app:iconGravity="end"
-        app:iconTint="@color/settings_icon_color" />
+        android:paddingStart="@dimen/setting_but_padding_left"
+        android:paddingEnd="@dimen/setting_but_padding_right">
+        <TextView
+            android:layout_width="@dimen/setting_but_text_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/setting_but_text_end"
+            android:layout_weight="1"
+            android:layout_marginVertical="@dimen/setting_but_text_vertical"
+            android:text="@string/offer"
+            android:textColor="@color/black"
+            android:textSize="@dimen/setting_but_text_size" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/forward"
+            app:tint="@color/settings_icon_color" />
+
+    </LinearLayout>
 
 </LinearLayout>

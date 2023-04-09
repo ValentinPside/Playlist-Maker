@@ -2092,10 +2092,8 @@ dimen m3_sys_typescale_title_small_letter_spacing
 dimen m3_sys_typescale_title_small_text_size
 dimen m3_timepicker_display_stroke_width
 dimen m3_timepicker_window_elevation
-dimen main_but_height
 dimen main_but_margin_left_and_right
 dimen main_but_text_size
-dimen main_but_width
 dimen material_bottom_sheet_max_width
 dimen material_clock_display_padding
 dimen material_clock_face_margin_top
@@ -2346,7 +2344,11 @@ dimen notification_top_pad_large_text
 dimen setting_but_padding_left
 dimen setting_but_padding_right
 dimen setting_but_radius
+dimen setting_but_text_end
 dimen setting_but_text_size
+dimen setting_but_text_vertical
+dimen setting_but_text_width
+dimen setting_text_padding_top_and_bottom
 dimen test_dimen
 dimen test_mtrl_calendar_day_cornerSize
 dimen test_navigation_bar_active_item_max_width
@@ -2627,9 +2629,6 @@ id bounceStart
 id button1
 id button2
 id button3
-id button4
-id button5
-id button6
 id buttonPanel
 id cache_measures
 id callMeasure
