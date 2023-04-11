@@ -4,7 +4,7 @@
             "outputFile": "com.example.playlistmaker.app-mergeDebugResources-3:/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\н\\.gradle\\caches\\transforms-3\\ad4a9900ee650cab445b7a64bbefb6e8\\transformed\\appcompat-1.4.1\\res\\values-v18\\values-v18.xml",
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\ad4a9900ee650cab445b7a64bbefb6e8\\transformed\\appcompat-1.4.1\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

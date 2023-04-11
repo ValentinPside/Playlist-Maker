@@ -11,7 +11,5 @@
     <dimen name="setting_but_text_end">16dp</dimen>
     <dimen name="setting_but_text_width">0dp</dimen>
     <dimen name="setting_but_text_vertical">21dp</dimen>
-
-
-
+    <dimen name="setting_switch_padding_top_and_bottom">21dp</dimen>
 </resources>
