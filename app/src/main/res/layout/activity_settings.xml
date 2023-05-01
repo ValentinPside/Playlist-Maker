@@ -5,104 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Settings" >
+    tools:context=".Settings"
+    android:theme="@style/SettingsActivityTop">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="@drawable/vector"
-        android:layout_marginBottom="24dp">
+        android:layout_marginBottom="24dp"
+        app:navigationIcon="@drawable/vector">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="@string/settings"
-            android:textColor="@color/black"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:gravity="center_vertical" />
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
     <Switch
+        style="@style/SettingsLinearLayout"
         android:id="@+id/switch2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/setting_but_padding_left"
-        android:paddingRight="@dimen/setting_but_padding_right"
         android:paddingTop="@dimen/setting_switch_padding_top_and_bottom"
         android:paddingBottom="@dimen/setting_switch_padding_top_and_bottom"
         android:text="@string/dark_style"
         android:textAlignment="viewStart"
         android:textSize="@dimen/setting_but_text_size"
-        tools:ignore="UseSwitchCompatOrMaterialXml"/>
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:theme="@style/SettingsActivityIcon"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/setting_but_padding_left"
-        android:paddingEnd="@dimen/setting_but_padding_right">
+        style="@style/SettingsLinearLayout">
         <TextView
-            android:layout_width="@dimen/setting_but_text_width"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/setting_but_text_end"
-            android:layout_weight="1"
             android:layout_marginVertical="@dimen/setting_but_text_vertical"
             android:text="@string/share"
-            android:textColor="@color/black"
-            android:textSize="@dimen/setting_but_text_size" />
+            style="@style/SettingsText"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/share"
+            style="@style/SettingsImageView"
             android:src="@drawable/share"
-            app:tint="@color/settings_icon_color" />
+            android:theme="@style/SettingsActivityIcon"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/setting_but_padding_left"
-        android:paddingEnd="@dimen/setting_but_padding_right">
+        style="@style/SettingsLinearLayout">
         <TextView
-            android:layout_width="@dimen/setting_but_text_width"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/setting_but_text_end"
-            android:layout_weight="1"
             android:layout_marginVertical="@dimen/setting_but_text_vertical"
             android:text="@string/support"
-            android:textColor="@color/black"
-            android:textSize="@dimen/setting_but_text_size" />
+            style="@style/SettingsText"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/support"
+            style="@style/SettingsImageView"
             android:src="@drawable/support"
-            app:tint="@color/settings_icon_color" />
+            android:theme="@style/SettingsActivityIcon" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/setting_but_padding_left"
-        android:paddingEnd="@dimen/setting_but_padding_right">
+        style="@style/SettingsLinearLayout">
         <TextView
-            android:layout_width="@dimen/setting_but_text_width"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/setting_but_text_end"
-            android:layout_weight="1"
             android:layout_marginVertical="@dimen/setting_but_text_vertical"
             android:text="@string/offer"
-            android:textColor="@color/black"
-            android:textSize="@dimen/setting_but_text_size" />
+            style="@style/SettingsText"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/forward"
+            style="@style/SettingsImageView"
             android:src="@drawable/forward"
-            app:tint="@color/settings_icon_color" />
+            android:theme="@style/SettingsActivityIcon" />
 
     </LinearLayout>
 

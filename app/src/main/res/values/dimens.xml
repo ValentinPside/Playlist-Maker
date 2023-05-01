@@ -12,4 +12,13 @@
     <dimen name="setting_but_text_width">0dp</dimen>
     <dimen name="setting_but_text_vertical">21dp</dimen>
     <dimen name="setting_switch_padding_top_and_bottom">21dp</dimen>
+    <dimen name="corner_radius_search_act_buttons">54dp</dimen>
+    <dimen name="corner_margin">20dp</dimen>
+    <dimen name="text_size_search_act_buttons">14sp</dimen>
+    <dimen name="margin_title_top">14dp</dimen>
+    <dimen name="base_text_size">22sp</dimen>
+    <dimen name="search_margin_horizontal">16dp</dimen>
+    <dimen name="settings_text_size">16sp</dimen>
+    <dimen name="search_imagine_margins">28dp</dimen>
+    <dimen name="search_edit_text_margins">16dp</dimen>
 </resources>
