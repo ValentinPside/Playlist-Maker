@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.playlistmaker.app-mergeDebugResources-24:/values-et/values-et.xml",
+            "outputFile": "com.example.playlistmaker.app-mergeDebugResources-3:/values-et/values-et.xml",
             "map": [
                 {
                     "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\6571209f3fbd259d19d2adf408a1b7c0\\transformed\\material-1.5.0\\res\\values-et\\values-et.xml",

@@ -1592,6 +1592,7 @@
     <item quantity="one"><ns2:g id="count">%d</ns2:g> new notification</item>
     <item quantity="other"><ns2:g id="count">%d</ns2:g> new notifications</item>
   </plurals>
+    <string name="SettingsSubText">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="SettingsSubject">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="SettingsText">https://yandex.ru/legal/practicum_offer/</string>
     <string name="YP_Android_URL">https://practicum.yandex.ru/android-developer/</string>

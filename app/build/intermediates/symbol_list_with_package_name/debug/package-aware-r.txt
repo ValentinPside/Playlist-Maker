@@ -3216,6 +3216,7 @@ menu example_menu2
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+string SettingsSubText
 string SettingsSubject
 string SettingsText
 string YP_Android_URL

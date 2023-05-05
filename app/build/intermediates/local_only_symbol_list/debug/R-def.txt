@@ -70,6 +70,7 @@ layout activity_search
 layout activity_settings
 mipmap ic_launcher
 mipmap ic_launcher_round
+string SettingsSubText
 string SettingsSubject
 string SettingsText
 string YP_Android_URL

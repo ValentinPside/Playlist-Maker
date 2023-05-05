@@ -1,27 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.playlistmaker.app-mergeDebugResources-24:/values-v23/values-v23.xml",
+            "outputFile": "com.example.playlistmaker.app-mergeDebugResources-3:/values-v23/values-v23.xml",
             "map": [
-                {
-                    "source": "J:\\Playlist-Maker\\app\\src\\main\\res\\values-v23\\themes.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "59",
-                        "endLines": "7",
-                        "endColumns": "12",
-                        "endOffsets": "374"
-                    },
-                    "to": {
-                        "startLines": "53",
-                        "startColumns": "4",
-                        "startOffsets": "3382",
-                        "endLines": "57",
-                        "endColumns": "12",
-                        "endOffsets": "3693"
-                    }
-                },
                 {
                     "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\ad4a9900ee650cab445b7a64bbefb6e8\\transformed\\appcompat-1.4.1\\res\\values-v23\\values-v23.xml",
                     "from": {
@@ -77,6 +58,25 @@
                         "endLines": "52",
                         "endColumns": "12",
                         "endOffsets": "3377"
+                    }
+                },
+                {
+                    "source": "C:\\Playlist-Maker\\app\\src\\main\\res\\values-v23\\themes.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "374"
+                    },
+                    "to": {
+                        "startLines": "53",
+                        "startColumns": "4",
+                        "startOffsets": "3382",
+                        "endLines": "57",
+                        "endColumns": "12",
+                        "endOffsets": "3693"
                     }
                 }
             ]

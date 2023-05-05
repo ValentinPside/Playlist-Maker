@@ -20,7 +20,8 @@ class SettingsActivity : AppCompatActivity() {
         shareView.setOnClickListener {
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
-                putExtra(Intent.EXTRA_TEXT, R.string.YP_Android_URL)
+                val message = getString(R.string.YP_Android_URL)
+                putExtra(Intent.EXTRA_TEXT, message)
                 Intent.createChooser(this, null)
                 startActivity(this)
             }
@@ -29,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
             Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
                 val subject = getString(R.string.SettingsSubject)
-                val message = getString(R.string.SettingsText)
+                val message = getString(R.string.SettingsSubText)
                 putExtra(Intent.EXTRA_EMAIL, arrayOf("valentinmalts@yandex.ru"))
                 putExtra(Intent.EXTRA_SUBJECT, subject)
                 putExtra(Intent.EXTRA_TEXT, message)

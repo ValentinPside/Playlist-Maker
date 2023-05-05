@@ -36,6 +36,7 @@
     <dimen name="setting_text_padding_top_and_bottom">12dp</dimen>
     <dimen name="settings_text_size">16sp</dimen>
     <dimen name="text_size_search_act_buttons">14sp</dimen>
+    <string name="SettingsSubText">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="SettingsSubject">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="SettingsText">https://yandex.ru/legal/practicum_offer/</string>
     <string name="YP_Android_URL">https://practicum.yandex.ru/android-developer/</string>
