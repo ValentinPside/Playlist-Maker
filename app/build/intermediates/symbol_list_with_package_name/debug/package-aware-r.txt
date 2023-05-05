@@ -1178,6 +1178,11 @@ bool m3_sys_typescale_title_large_text_all_caps
 bool m3_sys_typescale_title_medium_text_all_caps
 bool m3_sys_typescale_title_small_text_all_caps
 bool mtrl_btn_textappearance_all_caps
+color YP_Black
+color YP_Blue
+color YP_Light_Gray
+color YP_Text_Gray
+color YP_White
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -1859,6 +1864,7 @@ dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
 dimen action_bar_size
 dimen appcompat_dialog_background_inset
+dimen base_text_size
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -1870,6 +1876,8 @@ dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
 dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
+dimen corner_margin
+dimen corner_radius_search_act_buttons
 dimen def_drawer_elevation
 dimen default_dimension
 dimen design_appbar_elevation
@@ -2094,6 +2102,7 @@ dimen m3_timepicker_display_stroke_width
 dimen m3_timepicker_window_elevation
 dimen main_but_margin_left_and_right
 dimen main_but_text_size
+dimen margin_title_top
 dimen material_bottom_sheet_max_width
 dimen material_clock_display_padding
 dimen material_clock_face_margin_top
@@ -2341,6 +2350,9 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen search_edit_text_margins
+dimen search_imagine_margins
+dimen search_margin_horizontal
 dimen setting_but_padding_left
 dimen setting_but_padding_right
 dimen setting_but_radius
@@ -2348,7 +2360,9 @@ dimen setting_but_text_end
 dimen setting_but_text_size
 dimen setting_but_text_vertical
 dimen setting_but_text_width
+dimen setting_switch_padding_top_and_bottom
 dimen setting_text_padding_top_and_bottom
+dimen settings_text_size
 dimen test_dimen
 dimen test_mtrl_calendar_day_cornerSize
 dimen test_navigation_bar_active_item_max_width
@@ -2362,6 +2376,7 @@ dimen test_navigation_bar_item_min_width
 dimen test_navigation_bar_label_padding
 dimen test_navigation_bar_shadow_height
 dimen test_navigation_bar_text_size
+dimen text_size_search_act_buttons
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -2460,6 +2475,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable clear
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -2520,6 +2536,8 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable search
+drawable search_field
+drawable search_icon
 drawable settings
 drawable share
 drawable support
@@ -2528,6 +2546,8 @@ drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable vector
+font ys_display_medium
+font ys_display_regular
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2649,6 +2669,7 @@ id chip3
 id chip_group
 id chronometer
 id circle_center
+id clear_button
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -2722,6 +2743,7 @@ id fixed
 id flip
 id floating
 id forever
+id forward
 id fragment_container_view_tag
 id frost
 id ghost_view
@@ -2889,6 +2911,7 @@ id search_bar
 id search_button
 id search_close_btn
 id search_edit_frame
+id search_field
 id search_go_btn
 id search_mag_icon
 id search_plate
@@ -2898,6 +2921,7 @@ id select_dialog_listview
 id selected
 id selection_type
 id settings_toolbar
+id share
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -2935,6 +2959,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id support
 id supportScrollUp
 id switch2
 id tabMode
@@ -2976,6 +3001,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
+id toolbar
 id top
 id topPanel
 id touch_outside
@@ -3190,6 +3216,10 @@ menu example_menu2
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+string SettingsSubject
+string SettingsText
+string YP_Android_URL
+string YP_Offer_URL
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -3226,6 +3256,7 @@ string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
+string clear_history
 string clear_text_end_icon_content_description
 string dark_style
 string error_icon_content_description
@@ -3234,6 +3265,7 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string input_hint
 string item_view_role_description
 string library
 string m3_ref_typeface_brand_display_regular
@@ -3323,7 +3355,10 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string refresh
 string search
+string search_hint
+string search_history_hint
 string search_menu_title
 string settings
 string share
@@ -3607,6 +3642,9 @@ style CardView
 style CardView_Dark
 style CardView_Light
 style EmptyTheme
+style MainActivity
+style MainButtonStyle
+style MainLayout
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Body_Text
 style MaterialAlertDialog_Material3_Body_Text_CenterStacked
@@ -3626,6 +3664,7 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel
 style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
+style MessageTextStyle
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents
@@ -3657,6 +3696,15 @@ style RtlOverlay_Widget_AppCompat_Search_DropDown_Text
 style RtlOverlay_Widget_AppCompat_SearchView_MagIcon
 style RtlUnderlay_Widget_AppCompat_ActionButton
 style RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
+style SearchActivityButtons
+style SearchActivityTop
+style SearchButtonStyle
+style SearchEditText
+style SettingsActivityIcon
+style SettingsActivityTop
+style SettingsImageView
+style SettingsLinearLayout
+style SettingsText
 style ShapeAppearance_Material3_LargeComponent
 style ShapeAppearance_Material3_MediumComponent
 style ShapeAppearance_Material3_NavigationBarView_ActiveIndicator

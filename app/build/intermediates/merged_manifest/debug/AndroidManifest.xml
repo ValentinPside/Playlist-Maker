@@ -21,21 +21,28 @@
         android:testOnly="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" >
         <activity
-            android:name="com.example.playlistmaker.Search"
+            android:name="com.example.playlistmaker.MediatecaActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.playlistmaker.Mediateca"
+            android:name="com.example.playlistmaker.SearchActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.example.playlistmaker.Settings"
+            android:name="com.example.playlistmaker.MediatecaActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.playlistmaker.SettingsActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
