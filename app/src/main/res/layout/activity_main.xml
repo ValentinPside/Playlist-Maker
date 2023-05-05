@@ -16,18 +16,18 @@
         android:textAppearance="@style/title"
         style="@style/MessageTextStyle"/>
 
-    <Button style="@style/ButtonStyle"
+    <Button style="@style/MainButtonStyle"
         android:id="@+id/button1"
         android:layout_marginTop="40dp"
         android:text="@string/search"
         app:icon="@drawable/search" />
 
-    <Button style="@style/ButtonStyle"
+    <Button style="@style/MainButtonStyle"
         android:id="@+id/button2"
         android:text="@string/library"
         app:icon="@drawable/library" />
 
-    <Button style="@style/ButtonStyle"
+    <Button style="@style/MainButtonStyle"
         android:id="@+id/button3"
         android:layout_marginBottom="28dp"
         android:text="@string/settings"

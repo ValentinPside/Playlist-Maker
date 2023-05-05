@@ -36,7 +36,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="SettingsImageView">
@@ -45,7 +45,7 @@
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
-    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    <style name="MainButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>

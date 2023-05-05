@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:theme="@style/SearchActivityTop"
     android:visibility="visible"
-    tools:context=".Search">
+    tools:context=".SearchActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -51,6 +51,7 @@
             android:singleLine="true"
             tools:ignore="TouchTargetSizeCheck"
             android:theme="@style/SearchEditText"
+            android:textColor="@color/YP_Black"
             />
         <ImageView
             android:id="@+id/clear_button"

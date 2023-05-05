@@ -3,9 +3,7 @@ package com.example.playlistmaker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     private fun navigateTo(clazz: Class<out AppCompatActivity>) {
@@ -21,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         val settingsButton = findViewById<Button>(R.id.button3)
 
         mediatecaButton.setOnClickListener {
-            navigateTo(Mediateca::class.java)
+            navigateTo(MediatecaActivity::class.java)
         }
         searchButton.setOnClickListener {
-            navigateTo(Search::class.java)
+            navigateTo(SearchActivity::class.java)
         }
         settingsButton.setOnClickListener {
-            navigateTo(Settings::class.java)
+            navigateTo(SettingsActivity::class.java)
         }
     }
 }
