@@ -2,6 +2,7 @@
 <resources>
     <dimen name="setting_but_radius">16dp</dimen>
     <dimen name="icon_but_padding">8dp</dimen>
+    <dimen name="primary_text">16sp</dimen>
     <dimen name="main_but_text_size">22sp</dimen>
     <dimen name="setting_but_padding_left">16dp</dimen>
     <dimen name="setting_but_padding_right">12dp</dimen>

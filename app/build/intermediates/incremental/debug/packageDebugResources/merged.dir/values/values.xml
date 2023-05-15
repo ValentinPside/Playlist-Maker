@@ -22,6 +22,7 @@
     <dimen name="main_but_margin_left_and_right">16dp</dimen>
     <dimen name="main_but_text_size">22sp</dimen>
     <dimen name="margin_title_top">14dp</dimen>
+    <dimen name="primary_text">16sp</dimen>
     <dimen name="search_edit_text_margins">16dp</dimen>
     <dimen name="search_imagine_margins">28dp</dimen>
     <dimen name="search_margin_horizontal">16dp</dimen>
@@ -174,6 +175,27 @@
         
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         
+    </style>
+    <style name="primary_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">@dimen/primary_text</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textFontWeight">400</item>
+    </style>
+    <style name="rvForwardStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="tint">@color/YP_Text_Gray</item>
+    </style>
+    <style name="rvLilTextStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textColor">@color/YP_Text_Gray</item>
+        <item name="android:textColorHint">@color/YP_Text_Gray</item>
+        <item name="tint">@color/YP_Text_Gray</item>
+    </style>
+    <style name="rvTextStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:textColor">@color/YP_Black</item>
+        <item name="android:textColorHint">@color/YP_Black</item>
+        <item name="tint">@color/YP_Black</item>
     </style>
     <style name="some_id">
         <item name="android:textSize">22sp</item>
