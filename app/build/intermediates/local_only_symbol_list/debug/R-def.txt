@@ -36,6 +36,7 @@ dimen setting_but_text_width
 dimen setting_switch_padding_top_and_bottom
 dimen setting_text_padding_top_and_bottom
 dimen settings_text_size
+dimen text_size_item
 dimen text_size_search_act_buttons
 drawable back
 drawable clear

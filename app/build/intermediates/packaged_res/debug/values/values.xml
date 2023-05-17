@@ -36,6 +36,7 @@
     <dimen name="setting_switch_padding_top_and_bottom">21dp</dimen>
     <dimen name="setting_text_padding_top_and_bottom">12dp</dimen>
     <dimen name="settings_text_size">16sp</dimen>
+    <dimen name="text_size_item">11sp</dimen>
     <dimen name="text_size_search_act_buttons">14sp</dimen>
     <string name="SettingsSubText">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="SettingsSubject">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
@@ -109,7 +110,6 @@
     <style name="SearchActivityTop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:background">@color/YP_White</item>
         <item name="android:textColor">@color/YP_Black</item>
-        <item name="tint">@color/YP_Black</item>
     </style>
     <style name="SearchButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_weight">1</item>

@@ -2384,6 +2384,7 @@ dimen test_navigation_bar_item_min_width
 dimen test_navigation_bar_label_padding
 dimen test_navigation_bar_shadow_height
 dimen test_navigation_bar_text_size
+dimen text_size_item
 dimen text_size_search_act_buttons
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding

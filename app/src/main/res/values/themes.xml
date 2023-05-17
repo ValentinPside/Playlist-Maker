@@ -26,7 +26,6 @@
     <style name="SearchActivityTop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:background">@color/YP_White</item>
         <item name="android:textColor">@color/YP_Black</item>
-        <item name="tint">@color/YP_Black</item>
     </style>
     <style name="SearchEditText" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:backgroundTint">@color/YP_Light_Gray</item>
