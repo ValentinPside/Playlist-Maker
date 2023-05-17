@@ -29,14 +29,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MediatecaActivity"
-            android:exported="false"
-            tools:ignore="DuplicateActivity">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".SettingsActivity"
             android:exported="false">
             <meta-data

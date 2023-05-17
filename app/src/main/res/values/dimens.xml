@@ -16,6 +16,7 @@
     <dimen name="corner_radius_search_act_buttons">54dp</dimen>
     <dimen name="corner_margin">20dp</dimen>
     <dimen name="text_size_search_act_buttons">14sp</dimen>
+    <dimen name="text_size_item">11sp</dimen>
     <dimen name="margin_title_top">14dp</dimen>
     <dimen name="base_text_size">22sp</dimen>
     <dimen name="search_margin_horizontal">16dp</dimen>

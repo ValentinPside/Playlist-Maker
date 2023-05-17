@@ -62,6 +62,8 @@ id button3
 id clear_button
 id ellipse
 id forward
+id frameLayout
+id linearLayout
 id rv_search_track
 id search_button
 id search_field
