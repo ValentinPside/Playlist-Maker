@@ -28,12 +28,13 @@
     </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:layout_marginTop="8dp">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <EditText
             android:id="@+id/search_field"
@@ -49,29 +50,41 @@
             android:minHeight="36dp"
             android:paddingHorizontal="42dp"
             android:singleLine="true"
-            tools:ignore="TouchTargetSizeCheck"
-            android:theme="@style/SearchEditText"
             android:textColor="@color/YP_Black"
-            />
+            android:theme="@style/SearchEditText"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <ImageView
             android:id="@+id/clear_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/clear"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="@dimen/search_imagine_margins"
-            android:visibility="gone"
+            android:src="@drawable/clear"
             android:theme="@style/SearchEditText"
-            />
+            android:visibility="gone" />
+
         <ImageView
             android:id="@+id/search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/search_icon"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="@dimen/search_imagine_margins"
-            android:theme="@style/SearchEditText"
-            />
-
+            android:src="@drawable/search_icon"
+            android:theme="@style/SearchEditText" />
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_track"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        tools:itemCount="5"
+        tools:listitem="@layout/track_item" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.RecyclerView
 
 class SearchActivity : AppCompatActivity() {
     private companion object {
@@ -24,6 +25,10 @@ class SearchActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener { onBackPressed() }
         val clearButton = findViewById<ImageView>(R.id.clear_button)
         val searchTextField = findViewById<EditText>(R.id.search_field)
+        val trackAdapter = TrackAdapter(tracks)
+        val rvSearchTrack = findViewById<RecyclerView>(R.id.rv_search_track)
+        rvSearchTrack.adapter = trackAdapter
+
         val simpleTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // empty
