@@ -45,9 +45,11 @@
     <string name="YP_Offer_URL">https://yandex.ru/legal/practicum_offer/</string>
     <string name="app_name">Playlist Maker</string>
     <string name="clear_history">Очистить историю</string>
+    <string name="communication_problem">Проблемы со связью\n\nЗагрузка не удалась.Проверьте подключение к интернету</string>
     <string name="dark_style">Тёмная тема</string>
     <string name="input_hint">Поиск</string>
     <string name="library">Медиатека</string>
+    <string name="nothing_found">Ничего не нашлось</string>
     <string name="offer">Пользовательское соглашение</string>
     <string name="refresh">Обновить</string>
     <string name="search">Поиск</string>
@@ -57,6 +59,7 @@
     <string name="share">Поделиться приложением</string>
     <string name="support">Написать в поддержку</string>
     <string name="title">Playlist Maker</string>
+    <string name="update">Обновить</string>
     <style name="MainActivity" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:background">@color/main_col</item>
     </style>
