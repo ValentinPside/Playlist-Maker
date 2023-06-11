@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/vector">
+        style="@style/BackIcon">
 
         <TextView
             android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/nothing_found"/>
+            style="@style/SearchNothingFound"/>
 
         <TextView
             android:id="@+id/nothing_found_text"
@@ -132,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/communication_problem"/>
+            style="@style/SearchCommunicationProblem"/>
 
         <TextView
             android:id="@+id/communication_problem_text"
@@ -151,17 +151,12 @@
             android:layout_height="36dp"
             android:layout_marginTop="24dp"
             android:layout_gravity="center"
-            android:backgroundTint="?attr/colorOnPrimary"
             android:text="@string/update"
-            android:textColor="?attr/colorSecondary"
-            android:textSize="14sp"
             android:maxLines="1"
             android:textAllCaps="false"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            app:cornerRadius="54dp"
-            style="@style/primary_text"/>
-
+            style="@style/SearchButText"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

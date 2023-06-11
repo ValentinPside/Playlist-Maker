@@ -1,9 +1,9 @@
-#Fri Jun 02 20:26:57 MSK 2023
-base.2=C\:\\GitRepository\\Playlist-Maker\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+#Sun Jun 11 23:05:12 MSK 2023
+base.2=C\:\\Playlist-Maker\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
 path.2=6/classes.dex
-base.1=C\:\\GitRepository\\Playlist-Maker\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.1=C\:\\Playlist-Maker\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 path.1=0/classes.dex
-base.0=C\:\\GitRepository\\Playlist-Maker\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.0=C\:\\Playlist-Maker\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex

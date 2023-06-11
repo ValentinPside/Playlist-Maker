@@ -23,4 +23,6 @@
     <dimen name="settings_text_size">16sp</dimen>
     <dimen name="search_imagine_margins">28dp</dimen>
     <dimen name="search_edit_text_margins">16dp</dimen>
+    <dimen name="search_but_text_size">14sp</dimen>
+    <dimen name="search_but_corner_rad">54dp</dimen>
 </resources>

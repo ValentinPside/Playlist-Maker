@@ -6,98 +6,98 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml
+8-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="32" />
-9-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml
+9-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:5:5-67
-11-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:5:22-64
+11-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:7:5-51:19
+13-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:7:5-51:19
 14        android:allowBackup="true"
-14-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:8:9-35
+14-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 15-->[androidx.core:core:1.7.0] C:\Users\valen\.gradle\caches\transforms-3\9df45a95e4e06a011612ef3452b5826c\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 16        android:dataExtractionRules="@xml/data_extraction_rules"
-16-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:9:9-65
+16-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:9:9-65
 17        android:debuggable="true"
 18        android:fullBackupContent="@xml/backup_rules"
-18-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:10:9-54
+18-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:10:9-54
 19        android:icon="@mipmap/ic_launcher"
-19-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:11:9-43
+19-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:11:9-43
 20        android:label="@string/app_name"
-20-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:12:9-41
+20-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:12:9-41
 21        android:roundIcon="@mipmap/ic_launcher_round"
-21-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:13:9-54
+21-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:13:9-54
 22        android:supportsRtl="true"
-22-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:14:9-35
+22-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:14:9-35
 23        android:testOnly="true"
 24        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" >
-24-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:15:9-77
+24-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:15:9-77
 25        <activity
-25-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:17:9-23:20
+25-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:17:9-23:20
 26            android:name="com.example.playlistmaker.MediatecaActivity"
-26-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:18:13-46
+26-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:18:13-46
 27            android:exported="false" >
-27-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:19:13-37
+27-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:19:13-37
 28            <meta-data
-28-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
+28-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
 29                android:name="android.app.lib_name"
-29-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
+29-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
 30                android:value="" />
-30-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
+30-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
 31        </activity>
 32        <activity
-32-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:24:9-30:20
+32-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:24:9-30:20
 33            android:name="com.example.playlistmaker.SearchActivity"
-33-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:25:13-43
+33-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:25:13-43
 34            android:exported="false" >
-34-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:26:13-37
+34-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:26:13-37
 35            <meta-data
-35-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
+35-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
 36                android:name="android.app.lib_name"
-36-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
+36-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
 37                android:value="" />
-37-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
+37-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
 38        </activity>
 39        <activity
-39-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:31:9-37:20
+39-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:31:9-37:20
 40            android:name="com.example.playlistmaker.SettingsActivity"
-40-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:32:13-45
+40-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:32:13-45
 41            android:exported="false" >
-41-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:33:13-37
+41-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:33:13-37
 42            <meta-data
-42-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
+42-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
 43                android:name="android.app.lib_name"
-43-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
+43-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
 44                android:value="" />
-44-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
+44-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
 45        </activity>
 46        <activity
-46-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:38:9-50:20
+46-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:38:9-50:20
 47            android:name="com.example.playlistmaker.MainActivity"
-47-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:39:13-41
+47-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:39:13-41
 48            android:exported="true" >
-48-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:40:13-36
+48-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:40:13-36
 49            <intent-filter>
-49-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:41:13-45:29
+49-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:41:13-45:29
 50                <action android:name="android.intent.action.MAIN" />
-50-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:42:17-69
-50-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:42:25-66
+50-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:42:17-69
+50-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:42:25-66
 51
 52                <category android:name="android.intent.category.LAUNCHER" />
-52-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:44:17-77
-52-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:44:27-74
+52-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:44:17-77
+52-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:44:27-74
 53            </intent-filter>
 54
 55            <meta-data
-55-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
+55-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:20:13-22:36
 56                android:name="android.app.lib_name"
-56-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
+56-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:21:17-52
 57                android:value="" />
-57-->C:\GitRepository\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
+57-->C:\Playlist-Maker\app\src\main\AndroidManifest.xml:22:17-33
 58        </activity>
 59
 60        <provider
