@@ -1,11 +1,155 @@
 [
     {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-mdpi_nothing_found_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-mdpi\\nothing_found_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-ldpi_communication_problem.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-ldpi\\communication_problem.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_communication_problem_light.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\communication_problem_light.xml"
+    },
+    {
+        "merged": "com.example.playlistmaker.app-merged_res-5:/layout_activity_search.xml.flat",
+        "source": "com.example.playlistmaker.app-main-7:/layout/activity_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-hdpi_nothing_found_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-hdpi\\nothing_found_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-ldpi_nothing_found_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-ldpi\\nothing_found_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xhdpi_communication_problem_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xhdpi\\communication_problem_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-hdpi_communication_problem.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-hdpi\\communication_problem.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_back.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\back.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_vector.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\vector.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_vector_dark.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\vector_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxxhdpi_communication_problem_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxxhdpi\\communication_problem_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxhdpi_nothing_found.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxhdpi\\nothing_found.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-hdpi_nothing_found.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-hdpi\\nothing_found.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_support.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\support.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_forward.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\forward.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxhdpi_nothing_found_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxhdpi\\nothing_found_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxhdpi_communication_problem_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxhdpi\\communication_problem_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_search_icon.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\search_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-mdpi_communication_problem_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-mdpi\\communication_problem_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-mdpi_communication_problem.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-mdpi\\communication_problem.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\font_ys_display_regular.ttf.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\font\\ys_display_regular.ttf"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-ldpi_communication_problem_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-ldpi\\communication_problem_light.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_share.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\share.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxxhdpi_nothing_found.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxxhdpi\\nothing_found.png"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\font_ys_display_medium.ttf.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\font\\ys_display_medium.ttf"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xhdpi_nothing_found_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xhdpi\\nothing_found_light.png"
+    },
+    {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_search_field.xml.flat",
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\search_field.xml"
     },
     {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-ldpi_nothing_found.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-ldpi\\nothing_found.png"
+    },
+    {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_clear.xml.flat",
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\clear.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_communication_problem.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\communication_problem.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxxhdpi_communication_problem.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxxhdpi\\communication_problem.png"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_placeholder.xml.flat",
@@ -20,28 +164,8 @@
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_back.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\back.xml"
-    },
-    {
-        "merged": "com.example.playlistmaker.app-merged_res-5:/layout_track_item.xml.flat",
-        "source": "com.example.playlistmaker.app-main-7:/layout/track_item.xml"
-    },
-    {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_vector.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\vector.xml"
-    },
-    {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-mdpi_nothing_found.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-mdpi\\nothing_found.png"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_ellipse.xml.flat",
@@ -56,24 +180,20 @@
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_library.xml.flat",
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\library.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_nothing_found_light.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\nothing_found_light.xml"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_support.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\support.xml"
-    },
-    {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_forward.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\forward.xml"
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-hdpi_communication_problem_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-hdpi\\communication_problem_light.png"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\xml_backup_rules.xml.flat",
@@ -84,8 +204,8 @@
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_search_icon.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\search_icon.xml"
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxxhdpi_nothing_found_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxxhdpi\\nothing_found_light.png"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_settings.xml.flat",
@@ -94,6 +214,10 @@
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_search.xml.flat",
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\layout\\activity_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xhdpi_communication_problem.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xhdpi\\communication_problem.png"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-mdpi_ic_launcher_round.webp.flat",
@@ -108,14 +232,6 @@
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\layout\\track_item.xml"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\font_ys_display_regular.ttf.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\font\\ys_display_regular.ttf"
-    },
-    {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\layout\\activity_main.xml"
     },
@@ -128,8 +244,12 @@
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\search.xml"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_share.xml.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\share.xml"
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-anydpi-v24_nothing_found.xml.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-anydpi-v24\\nothing_found.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxhdpi_communication_problem.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxhdpi\\communication_problem.png"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable_settings.xml.flat",
@@ -140,11 +260,7 @@
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\mipmap-hdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\font_ys_display_medium.ttf.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\font\\ys_display_medium.ttf"
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xhdpi_nothing_found.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xhdpi\\nothing_found.png"
     }
 ]

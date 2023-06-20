@@ -1,0 +1,52 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-mergeDebugResources-3:\\values-night-v28\\values-night-v28.xml",
+            "map": [
+                {
+                    "source": "C:\\Playlist-Maker\\app\\src\\main\\res\\values-night-v28\\styles.xml",
+                    "from": {
+                        "startLines": "-1,12,-1",
+                        "startColumns": "-1,4,-1",
+                        "startOffsets": "-1,492,-1",
+                        "endLines": "-1,20,-1",
+                        "endColumns": "-1,12,-1",
+                        "endOffsets": "-1,1009,-1"
+                    },
+                    "to": {
+                        "startLines": "2,5,14",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,169,683",
+                        "endLines": "4,13,21",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "164,678,1101"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.example.playlistmaker.app-mergeDebugResources-3:/values-night-v28/values-night-v28.xml",
+            "map": [
+                {
+                    "source": "C:\\Playlist-Maker\\app\\src\\main\\res\\values-night-v28\\styles.xml",
+                    "from": {
+                        "startLines": "21,-1,-1",
+                        "startColumns": "4,-1,-1",
+                        "startOffsets": "1015,-1,-1",
+                        "endLines": "23,-1,-1",
+                        "endColumns": "12,-1,-1",
+                        "endOffsets": "1118,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,5,14",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,161,675",
+                        "endLines": "4,13,21",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "156,670,1093"
+                    }
+                }
+            ]
+        }
+    ]
+}
