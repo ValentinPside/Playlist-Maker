@@ -18,6 +18,7 @@ class TrackViewHolder(parent: ViewGroup):
     private val trackName: TextView = itemView.findViewById(R.id.track_name)
     private val bandName: TextView = itemView.findViewById(R.id.band_name)
     private val trackTime: TextView = itemView.findViewById(R.id.track_time)
+    var trackNumber:Long = 0
 
     fun Long.formatTime(): String = SimpleDateFormat("mm:ss", Locale.getDefault()).format(this)
 

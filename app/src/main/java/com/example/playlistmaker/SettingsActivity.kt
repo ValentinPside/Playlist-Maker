@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Switch
 import androidx.appcompat.widget.Toolbar
 
 class SettingsActivity : AppCompatActivity() {
@@ -16,6 +17,11 @@ class SettingsActivity : AppCompatActivity() {
         val shareView = findViewById<ImageView>(R.id.share)
         val supportView = findViewById<ImageView>(R.id.support)
         val forwardView = findViewById<ImageView>(R.id.forward)
+        val themeSwitcher = findViewById<Switch>(R.id.switch2)
+
+        themeSwitcher.setOnCheckedChangeListener { _, checked ->
+            (applicationContext as App).switchTheme(checked)
+        }
 
         shareView.setOnClickListener {
             Intent(Intent.ACTION_SEND).apply {

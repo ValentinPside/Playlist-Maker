@@ -64,6 +64,7 @@ font ys_display_medium
 font ys_display_regular
 id albums_cover
 id band_name
+id button
 id button1
 id button2
 id button3
@@ -78,6 +79,7 @@ id linearLayout
 id nothing_found_image
 id nothing_found_placeholder
 id nothing_found_text
+id recyclerView
 id rv_search_track
 id search_button
 id search_field
@@ -85,6 +87,7 @@ id settings_toolbar
 id share
 id support
 id switch2
+id textView
 id title
 id toolbar
 id trackLayout

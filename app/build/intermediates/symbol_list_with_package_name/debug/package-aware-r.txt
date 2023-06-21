@@ -2666,6 +2666,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id button
 id button1
 id button2
 id button3
@@ -2931,6 +2932,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerView
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3030,6 +3032,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
