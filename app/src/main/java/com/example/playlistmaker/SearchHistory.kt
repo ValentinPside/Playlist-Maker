@@ -1,7 +1,5 @@
 package com.example.playlistmaker
 
-import android.content.Context
-import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -35,7 +33,7 @@ class SearchHistory {
         saveHistory()
     }
 
-    private fun saveHistory() {
+     private fun saveHistory() {
         json = gson.toJson(trackHistoryList)
 
         savedHistory.edit()
@@ -43,11 +41,5 @@ class SearchHistory {
             .putString(SEARCH_SHARED_PREFS_KEY, json)
             .apply()
         counter = trackHistoryList.size
-    }
-
-    fun toaster(context: Context, text: String) {
-        val duration = Toast.LENGTH_SHORT
-        val toast = Toast.makeText(context, text, duration)
-        toast.show()
     }
 }

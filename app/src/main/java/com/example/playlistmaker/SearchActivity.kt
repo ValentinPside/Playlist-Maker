@@ -38,7 +38,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var searchHistoryText: TextView
     private lateinit var searchHistoryCleanButton: Button
     private lateinit var searchHistoryRecyclerView: RecyclerView
-    lateinit var historyAdapter: TrackAdapter
     private var searchLineText : String? = null
     private val searchHistoryObj = SearchHistory()
 
@@ -47,7 +46,8 @@ class SearchActivity : AppCompatActivity() {
         private const val ITUNES_BASE_URL = "https://itunes.apple.com"
     }
 
-    private val trackAdapter = TrackAdapter()
+    private val trackAdapter = TrackAdapter(tracks)
+    private val historyAdapter = TrackAdapter(searchHistoryObj.trackHistoryList)
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(ITUNES_BASE_URL)
@@ -111,6 +111,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -118,21 +119,19 @@ class SearchActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener { onBackPressed() }
         clearButton = findViewById(R.id.clear_button)
         searchTextField = findViewById(R.id.search_field)
-        trackAdapter.tracks = tracks
         rvSearchTrack = findViewById(R.id.rv_search_track)
-        rvSearchTrack.adapter = trackAdapter
         nothingFoundPlaceholder = findViewById(R.id.nothing_found_placeholder)
         communicationProblemPlaceholder = findViewById(R.id.communication_problem_placeholder)
         communicationProblemButton = findViewById(R.id.update_button)
         searchHistoryText = findViewById(R.id.textView)
         searchHistoryCleanButton = findViewById(R.id.button)
         searchHistoryRecyclerView = findViewById(R.id.recyclerView)
-        historyAdapter = TrackAdapter()
-        historyAdapter.tracks = searchHistoryObj.trackHistoryList
+        rvSearchTrack.adapter = trackAdapter
+        searchHistoryRecyclerView.adapter = historyAdapter
 
         applicationContext.getSharedPreferences(SEARCH_SHARED_PREFS_KEY, MODE_PRIVATE)
         searchHistoryRecyclerView.layoutManager = LinearLayoutManager(this)
-        searchHistoryRecyclerView.adapter = historyAdapter
+
 
         searchTextField.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus && searchTextField.text.isEmpty() && App.trackHistoryList.isNotEmpty()) {
