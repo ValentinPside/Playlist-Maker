@@ -204,12 +204,12 @@
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxxhdpi_nothing_found_light.png.flat",
-        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxxhdpi\\nothing_found_light.png"
-    },
-    {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_settings.xml.flat",
         "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-main-7:\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\drawable-xxxhdpi_nothing_found_light.png.flat",
+        "source": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-pngs-0:\\drawable-xxxhdpi\\nothing_found_light.png"
     },
     {
         "merged": "C:\\Users\\valen\\.gradle\\daemon\\7.4\\com.example.playlistmaker.app-merged_res-5:\\layout_activity_search.xml.flat",
