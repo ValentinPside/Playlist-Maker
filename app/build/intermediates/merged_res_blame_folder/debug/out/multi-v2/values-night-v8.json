@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Playlist-Maker\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\GitRepository\\Playlist-Maker\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "17,25,29,20,2,45,35,40",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -40,7 +40,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Playlist-Maker\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\ad4a9900ee650cab445b7a64bbefb6e8\\transformed\\appcompat-1.4.1\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,687",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,771"
+                    },
+                    "to": {
+                        "startLines": "36,37,38,39,40,41,42,82",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "1889,1959,2043,2127,2223,2325,2427,5855",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "1954,2038,2122,2218,2320,2422,2516,5939"
+                    }
+                },
+                {
+                    "source": "C:\\GitRepository\\Playlist-Maker\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "15,12,9,2",
                         "startColumns": "4,4,4,4",
@@ -56,23 +73,6 @@
                         "endLines": "18,21,30,97",
                         "endColumns": "12,12,12,12",
                         "endOffsets": "1006,1137,1601,7308"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\ad4a9900ee650cab445b7a64bbefb6e8\\transformed\\appcompat-1.4.1\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593,687",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "120,204,288,384,486,588,682,771"
-                    },
-                    "to": {
-                        "startLines": "36,37,38,39,40,41,42,82",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "1889,1959,2043,2127,2223,2325,2427,5855",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "1954,2038,2122,2218,2320,2422,2516,5939"
                     }
                 }
             ]
