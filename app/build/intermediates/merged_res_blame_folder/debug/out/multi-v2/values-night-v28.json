@@ -4,7 +4,7 @@
             "outputFile": "com.example.playlistmaker.app-mergeDebugResources-3:/values-night-v28/values-night-v28.xml",
             "map": [
                 {
-                    "source": "C:\\GitRepository\\Playlist-Maker\\app\\src\\main\\res\\values-night-v28\\styles.xml",
+                    "source": "C:\\Playlist-Maker\\app\\src\\main\\res\\values-night-v28\\styles.xml",
                     "from": {
                         "startLines": "21,12,3",
                         "startColumns": "4,4,4",

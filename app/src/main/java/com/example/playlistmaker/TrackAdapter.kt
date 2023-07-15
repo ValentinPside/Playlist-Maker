@@ -4,24 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class TrackAdapter (var tracks: List<Track>) : RecyclerView.Adapter<TrackViewHolder> () {
-    private val searchHistoryObj = SearchHistory()
+class TrackAdapter (private val tracks: List<Track>
+) : RecyclerView.Adapter<SearchViewHolder> () {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.track_item, parent, false)
-        return TrackViewHolder(view as ViewGroup)
+        return SearchViewHolder(view)
     }
 
-
-    override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
-        App.getSharedPreferences()
+    override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.bind(tracks[position])
-        holder.itemView.setOnClickListener {
-            searchHistoryObj.editArray(tracks[position])
     }
-}
 
-
-override fun getItemCount(): Int =  tracks.size
-
+    override fun getItemCount(): Int {
+        return tracks.size
+    }
 }
