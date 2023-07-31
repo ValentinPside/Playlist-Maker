@@ -19,9 +19,12 @@ class SettingsActivity : AppCompatActivity() {
         val forwardView = findViewById<ImageView>(R.id.forward)
         val themeSwitcher = findViewById<Switch>(R.id.switch2)
 
-        themeSwitcher.setOnCheckedChangeListener { _, checked ->
-            (applicationContext as App).switchTheme(checked)
+        themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
+            themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
+                (applicationContext as App).switchTheme(checked)
+            }
         }
+
 
         shareView.setOnClickListener {
             Intent(Intent.ACTION_SEND).apply {

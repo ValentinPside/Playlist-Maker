@@ -1,45 +1,28 @@
 package com.example.playlistmaker
 
+import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+class SearchHistory(sharedPreferences : SharedPreferences) {
 
-class SearchHistory {
-    private val savedHistory = App.getSharedPreferences()
     private val gson = Gson()
-    private var json = ""
-    var counter = 0
-    var trackHistoryList = App.trackHistoryList
+    val historyTrackList : List<Track> = read(sharedPreferences)
 
-    fun editArray(newHistoryTrack: Track) {
-        if (json.isNotEmpty()) {
-            if (trackHistoryList.isEmpty()) {
-                if (savedHistory.contains(SEARCH_SHARED_PREFS_KEY)) {
-                    val type = object : TypeToken<ArrayList<Track>>() {}.type
-                    trackHistoryList = gson.fromJson(json, type)
-                }
-            }
-        }
-        if (trackHistoryList.contains(newHistoryTrack)) {
-            trackHistoryList.remove(newHistoryTrack)
-            trackHistoryList.add(0, newHistoryTrack)
-        } else {
-            if (trackHistoryList.size < 10) trackHistoryList.add(0, newHistoryTrack)
-            else {
-                trackHistoryList.removeAt(9)
-                trackHistoryList.add(0, newHistoryTrack)
-            }
-        }
-        saveHistory()
+
+    // чтение
+    private fun read(sharedPreferences : SharedPreferences): List<Track> {
+        val json = sharedPreferences.getString(SEARCH_HISTORY_TRACK_KEY, null) ?: return emptyList<Track>()
+        val type = object : TypeToken<List<Track>>() {}.type
+        return gson.fromJson(json, type)
     }
 
-     private fun saveHistory() {
-        json = gson.toJson(trackHistoryList)
-
-        savedHistory.edit()
-            .clear()
-            .putString(SEARCH_SHARED_PREFS_KEY, json)
+    // запись
+    private fun write(sharedPreferences : SharedPreferences) {
+        val json = Gson().toJson(historyTrackList)
+        sharedPreferences.edit()
+            .putString(SEARCH_HISTORY_TRACK_KEY, json)
             .apply()
-        counter = trackHistoryList.size
     }
+
 }
