@@ -2795,6 +2795,7 @@ id groups
 id guideline
 id header_title
 id hideable
+id history_group
 id home
 id homeAsUp
 id honorRequest
@@ -2958,7 +2959,6 @@ id search_close_btn
 id search_edit_frame
 id search_field
 id search_go_btn
-id search_group
 id search_mag_icon
 id search_plate
 id search_src_text

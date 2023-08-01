@@ -75,6 +75,7 @@ id communication_problem_text
 id ellipse
 id forward
 id frameLayout
+id history_group
 id linearLayout
 id nothing_found_image
 id nothing_found_placeholder
@@ -83,7 +84,6 @@ id recyclerView
 id rv_search_track
 id search_button
 id search_field
-id search_group
 id settings_toolbar
 id share
 id support

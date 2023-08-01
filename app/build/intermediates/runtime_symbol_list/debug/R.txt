@@ -2794,6 +2794,7 @@ int id groups 0x7f0900e1
 int id guideline 0x7f0900e2
 int id header_title 0x7f0900e3
 int id hideable 0x7f0900e4
+int id history_group 0x7f090209
 int id home 0x7f0900e5
 int id homeAsUp 0x7f0900e6
 int id honorRequest 0x7f0900e7
@@ -2957,7 +2958,6 @@ int id search_close_btn 0x7f090184
 int id search_edit_frame 0x7f090185
 int id search_field 0x7f090186
 int id search_go_btn 0x7f090187
-int id search_group 0x7f090188
 int id search_mag_icon 0x7f090189
 int id search_plate 0x7f09018a
 int id search_src_text 0x7f09018b

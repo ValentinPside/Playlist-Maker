@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -18,7 +19,6 @@ import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -89,7 +89,9 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
                     if (response.code() == 200) {
                         trackList.clear()
                         if (response.body()?.results?.isNotEmpty() == true) {
+                            Log.d("Время Long: ", "${response.body()?.results!!.get(0)}")
                             trackList.addAll(response.body()?.results!!)
+                            Log.d("Время Long: ", "${trackList.get(0)}")
                             rvSearchTrack.visibility = View.VISIBLE
 
                         } else {
@@ -125,7 +127,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
         historyRecyclerView = findViewById(R.id.recyclerView)
         nothingFoundPlaceholder = findViewById(R.id.nothing_found_placeholder)
         communicationProblemPlaceholder = findViewById(R.id.communication_problem_placeholder)
-        historyViewGroup = findViewById(R.id.search_group)
+        historyViewGroup = findViewById(R.id.history_group)
         sharedPreferences = getSharedPreferences(SEARCH_HISTORY_FILE_NAME, MODE_PRIVATE)
         searchHistory = SearchHistory(sharedPreferences)
 
@@ -135,6 +137,8 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
             searchHistory.historyTrackList as ArrayList<Track>
         }
 
+
+
         val communicationProblemButton = findViewById<Button>(R.id.update_button)
         rvSearchTrack.layoutManager = LinearLayoutManager(this)
         historyRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -143,8 +147,17 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
         rvSearchTrack.adapter = searchAdapter
         historyRecyclerView.adapter = historyAdapter
 
+        if(searchHistoryTrackList.isNotEmpty()){
+            historyViewGroup.visibility = View.VISIBLE
+        }
+
+        searchTextField.setOnFocusChangeListener { view, hasFocus ->
+            historyViewGroup.visibility = if (hasFocus && searchTextField.text.isEmpty()) View.VISIBLE else View.GONE
+        }
+
         searchTextField.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -155,19 +168,6 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
             }
         })
 
-
-
-        searchTextField.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-            }
-        })
 
         clearButton.setOnClickListener {
             searchTextField.setText("")
@@ -201,9 +201,6 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
     }
 
     override fun onClick(track: Track) {
-        searchHistoryTrackList.add(track)
-        sharedPreferences.edit()
-            .putString(SEARCH_HISTORY_TRACK_KEY, Gson().toJson(track))
-            .apply()
+        searchHistory.write(sharedPreferences, searchHistoryTrackList, track)
     }
 }
