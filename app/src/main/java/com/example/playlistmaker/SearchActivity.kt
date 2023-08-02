@@ -19,6 +19,7 @@ import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,6 +46,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
     private lateinit var sharedPreferences : SharedPreferences
     private lateinit var searchHistory : SearchHistory
     private lateinit var searchHistoryTrackList : ArrayList<Track>
+    private lateinit var listener: SharedPreferences.OnSharedPreferenceChangeListener
 
     private val trackList = ArrayList<Track>()
 
@@ -137,8 +139,6 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
             searchHistory.historyTrackList as ArrayList<Track>
         }
 
-
-
         val communicationProblemButton = findViewById<Button>(R.id.update_button)
         val clearHistoryButton = findViewById<Button>(R.id.button)
         rvSearchTrack.layoutManager = LinearLayoutManager(this)
@@ -151,6 +151,8 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
         if(searchHistoryTrackList.isNotEmpty()){
             historyViewGroup.visibility = View.VISIBLE
         }
+
+
 
         searchTextField.setOnFocusChangeListener { view, hasFocus ->
             historyViewGroup.visibility = if (hasFocus && searchTextField.text.isEmpty() && searchHistoryTrackList.isNotEmpty()) View.VISIBLE else View.GONE
@@ -176,14 +178,18 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
             val view: View? = this.currentFocus
             inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
             rvSearchTrack.visibility = View.GONE
-            if(searchHistoryTrackList.isNotEmpty()){
-                historyViewGroup.visibility = View.VISIBLE
+            if(searchHistoryTrackList.isEmpty()){
+                historyViewGroup.visibility = View.GONE
             }
         }
 
         clearHistoryButton.setOnClickListener{
             sharedPreferences.edit().clear().apply()
-            historyViewGroup = findViewById(R.id.history_group)
+            historyViewGroup.visibility = View.GONE
+            historyAdapter.tracks.clear()
+            searchHistoryTrackList.clear()
+            historyAdapter.notifyDataSetChanged()
+
         }
 
         searchTextField.addTextChangedListener(simpleTextWatcher)
@@ -211,5 +217,6 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
 
     override fun onClick(track: Track) {
         searchHistory.write(sharedPreferences, searchHistoryTrackList, track)
+        historyAdapter.notifyDataSetChanged()
     }
 }
