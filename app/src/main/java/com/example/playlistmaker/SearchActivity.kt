@@ -140,6 +140,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
 
 
         val communicationProblemButton = findViewById<Button>(R.id.update_button)
+        val clearHistoryButton = findViewById<Button>(R.id.button)
         rvSearchTrack.layoutManager = LinearLayoutManager(this)
         historyRecyclerView.layoutManager = LinearLayoutManager(this)
         searchAdapter = SearchAdapter(trackList, this)
@@ -152,7 +153,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
         }
 
         searchTextField.setOnFocusChangeListener { view, hasFocus ->
-            historyViewGroup.visibility = if (hasFocus && searchTextField.text.isEmpty()) View.VISIBLE else View.GONE
+            historyViewGroup.visibility = if (hasFocus && searchTextField.text.isEmpty() && searchHistoryTrackList.isNotEmpty()) View.VISIBLE else View.GONE
         }
 
         searchTextField.addTextChangedListener(object : TextWatcher {
@@ -175,6 +176,14 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
             val view: View? = this.currentFocus
             inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
             rvSearchTrack.visibility = View.GONE
+            if(searchHistoryTrackList.isNotEmpty()){
+                historyViewGroup.visibility = View.VISIBLE
+            }
+        }
+
+        clearHistoryButton.setOnClickListener{
+            sharedPreferences.edit().clear().apply()
+            historyViewGroup = findViewById(R.id.history_group)
         }
 
         searchTextField.addTextChangedListener(simpleTextWatcher)
