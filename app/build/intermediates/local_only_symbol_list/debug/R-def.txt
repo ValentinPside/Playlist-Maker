@@ -75,6 +75,7 @@ id communication_problem_text
 id ellipse
 id forward
 id frameLayout
+id history_group
 id linearLayout
 id nothing_found_image
 id nothing_found_placeholder

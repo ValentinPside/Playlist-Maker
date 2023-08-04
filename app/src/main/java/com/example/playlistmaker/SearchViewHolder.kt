@@ -18,10 +18,13 @@ class SearchViewHolder (parentView: View) : RecyclerView.ViewHolder(parentView) 
 
     fun Long.formatTime(): String = SimpleDateFormat("mm:ss", Locale.getDefault()).format(this)
 
-    fun bind(track: Track) {
+    fun bind(track: Track, listener: SearchAdapter.Listener) {
+        itemView.setOnClickListener{
+            listener.onClick(track)
+        }
         trackName.text = track.trackName
         artistName.text = track.artistName
-        trackTime.text = track.trackTime.formatTime().toString()
+        trackTime.text = track.trackTimeMillis.formatTime()
         Glide.with(itemView)
             .load(track.artworkUrl100)
             .placeholder(R.drawable.placeholder)

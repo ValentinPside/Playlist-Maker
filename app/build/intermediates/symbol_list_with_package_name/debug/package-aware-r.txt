@@ -2795,6 +2795,7 @@ id groups
 id guideline
 id header_title
 id hideable
+id history_group
 id home
 id homeAsUp
 id honorRequest
