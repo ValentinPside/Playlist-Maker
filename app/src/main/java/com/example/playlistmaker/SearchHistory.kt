@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken
 class SearchHistory(sharedPreferences : SharedPreferences) {
 
     val historyTrackList : List<Track> = read(sharedPreferences)
+    private var trackCount : Int = historyTrackList.size
 
     // чтение
     private fun read(sharedPreferences : SharedPreferences): List<Track> {
@@ -18,16 +19,13 @@ class SearchHistory(sharedPreferences : SharedPreferences) {
 
     // запись
      fun write(sharedPreferences : SharedPreferences, searchHistoryTrackList : ArrayList<Track>, track: Track) {
-        if(searchHistoryTrackList.size < 10 && !searchHistoryTrackList.contains(track)){
-            searchHistoryTrackList.add(0, track)
-        }
-        if(searchHistoryTrackList.size == 10 && !searchHistoryTrackList.contains(track)){
-            searchHistoryTrackList.add(0, track)
-            searchHistoryTrackList.removeAt(10)
-        }
-        if(searchHistoryTrackList.contains(track)){
-            searchHistoryTrackList.remove(track)
-            searchHistoryTrackList.add(0, track)
+        when {
+            trackCount < 10 && !searchHistoryTrackList.contains(track) -> {searchHistoryTrackList.add(0, track)
+                trackCount += 1}
+            trackCount == 10 && !searchHistoryTrackList.contains(track) -> {searchHistoryTrackList.add(0, track)
+                searchHistoryTrackList.removeAt(9)}
+            else -> {searchHistoryTrackList.remove(track)
+                searchHistoryTrackList.add(0, track)}
         }
         sharedPreferences.edit()
             .putString(SEARCH_HISTORY_TRACK_KEY, Gson().toJson(searchHistoryTrackList))

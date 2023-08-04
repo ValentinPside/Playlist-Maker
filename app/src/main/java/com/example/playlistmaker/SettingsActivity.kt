@@ -19,12 +19,9 @@ class SettingsActivity : AppCompatActivity() {
         val forwardView = findViewById<ImageView>(R.id.forward)
         val themeSwitcher = findViewById<Switch>(R.id.switch2)
 
-        themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
-            themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
-                (applicationContext as App).switchTheme(checked)
-            }
+        themeSwitcher.setOnCheckedChangeListener { _, checked ->
+            (applicationContext as App).switchTheme(checked)
         }
-
 
         shareView.setOnClickListener {
             Intent(Intent.ACTION_SEND).apply {
@@ -35,6 +32,7 @@ class SettingsActivity : AppCompatActivity() {
                 startActivity(this)
             }
         }
+
         supportView.setOnClickListener {
             Intent(Intent.ACTION_SENDTO).apply {
                 data = Uri.parse("mailto:")
@@ -46,6 +44,7 @@ class SettingsActivity : AppCompatActivity() {
                 startActivity(this)
             }
         }
+
         forwardView.setOnClickListener {
             Intent(Intent.ACTION_VIEW).apply{
                 data = Uri.parse("https://yandex.ru/legal/practicum_offer/")

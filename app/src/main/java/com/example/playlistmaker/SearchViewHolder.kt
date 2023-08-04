@@ -29,7 +29,11 @@ class SearchViewHolder (parentView: View) : RecyclerView.ViewHolder(parentView) 
             .load(track.artworkUrl100)
             .placeholder(R.drawable.placeholder)
             .centerCrop()
-            .transform(RoundedCorners(2))
+            .transform(RoundedCorners(
+                itemView.resources.getDimensionPixelSize(
+                    R.dimen.corner_radius
+                )
+            ))
             .into(albumsCover)
     }
 }

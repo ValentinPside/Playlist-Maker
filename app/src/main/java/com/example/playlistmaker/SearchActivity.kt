@@ -46,7 +46,6 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
     private lateinit var sharedPreferences : SharedPreferences
     private lateinit var searchHistory : SearchHistory
     private lateinit var searchHistoryTrackList : ArrayList<Track>
-    private lateinit var listener: SharedPreferences.OnSharedPreferenceChangeListener
 
     private val trackList = ArrayList<Track>()
 
@@ -132,13 +131,11 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
         historyViewGroup = findViewById(R.id.history_group)
         sharedPreferences = getSharedPreferences(SEARCH_HISTORY_FILE_NAME, MODE_PRIVATE)
         searchHistory = SearchHistory(sharedPreferences)
-
-        searchHistoryTrackList = if(searchHistory.historyTrackList.isEmpty()){
-            ArrayList()
-        } else{
-            searchHistory.historyTrackList as ArrayList<Track>
-        }
-
+        searchHistoryTrackList =
+            if(searchHistory.historyTrackList.isEmpty()){
+                ArrayList()}
+            else{searchHistory.historyTrackList as ArrayList<Track>
+            }
         val communicationProblemButton = findViewById<Button>(R.id.update_button)
         val clearHistoryButton = findViewById<Button>(R.id.button)
         rvSearchTrack.layoutManager = LinearLayoutManager(this)
