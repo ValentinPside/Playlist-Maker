@@ -1,6 +1,7 @@
 package com.example.playlistmaker
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +20,7 @@ import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
+import com.example.playlistmaker.DateUtils.formatDate
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -215,5 +216,16 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
     override fun onClick(track: Track) {
         searchHistory.write(sharedPreferences, searchHistoryTrackList, track)
         historyAdapter.notifyDataSetChanged()
+        val intent = Intent(this@SearchActivity, AudioPlayerActivity::class.java)
+        intent
+            .putExtra("album cover", track.artworkUrl100.replaceAfterLast('/',"512x512bb.jpg"))
+            .putExtra("name song", track.trackName)
+            .putExtra("band", track.artistName)
+            .putExtra("duration", track.trackTimeMillis)
+            .putExtra("album", track.collectionName)
+            .putExtra("year", formatDate(track.releaseDate))
+            .putExtra("genre", track.primaryGenreName)
+            .putExtra("country", track.country)
+        startActivity(intent)
     }
 }
