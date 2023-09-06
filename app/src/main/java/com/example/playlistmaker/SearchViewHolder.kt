@@ -21,7 +21,7 @@ class SearchViewHolder (parentView: View) : RecyclerView.ViewHolder(parentView) 
         }
         trackName.text = track.trackName
         artistName.text = track.artistName
-        trackTime.text = DateUtils.formatTime(track.trackTimeMillis)
+        trackTime.text = track.trackTimeMillis?.let { DateUtils.formatTime(it) }
         Glide.with(itemView)
             .load(track.artworkUrl100)
             .placeholder(R.drawable.placeholder)

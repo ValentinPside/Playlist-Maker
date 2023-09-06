@@ -47,7 +47,7 @@
     <TextView
         android:id="@+id/audioplayer_track_name"
         style="@style/YPTextBW"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="start"
@@ -70,13 +70,24 @@
 
     <ImageView
         android:id="@+id/audioPlayerPlayBut"
+        style="@style/AudioPlayerPlayBut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/audioplayer_band_name"
-        style="@style/AudioPlayerPlayBut"/>
+        app:layout_constraintBottom_toBottomOf="@+id/audioPlayerAddTrack"
+        app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
+        app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
+        app:layout_constraintTop_toTopOf="@+id/audioPlayerAddTrack" />
+
+    <ImageView
+        android:id="@+id/audioPlayerPauseBut"
+        style="@style/AudioPlayerPauseBut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/audioPlayerAddTrack"
+        app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
+        app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
+        app:layout_constraintTop_toTopOf="@+id/audioPlayerAddTrack"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/track_timeLeft"
@@ -179,20 +190,18 @@
         android:id="@+id/audioPlayerAddTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/audioPlayerPlayBut"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
-        app:layout_constraintTop_toTopOf="@+id/audioPlayerPlayBut"
-        app:layout_constraintVertical_bias="0.51"
+        app:layout_constraintTop_toBottomOf="@+id/audioplayer_band_name"
         app:srcCompat="@drawable/audioplayeraddtrack" />
 
     <ImageView
         android:id="@+id/audioPlayerLikeTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/audioPlayerPlayBut"
+        app:layout_constraintBottom_toBottomOf="@+id/audioPlayerAddTrack"
         app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
-        app:layout_constraintTop_toTopOf="@+id/audioPlayerPlayBut"
-        app:layout_constraintVertical_bias="0.51"
+        app:layout_constraintTop_toTopOf="@+id/audioPlayerAddTrack"
         app:srcCompat="@drawable/audioplayerliketrack" />
 
     <TextView
@@ -200,9 +209,10 @@
         style="@style/YPTextBW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="TextView"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/audioPlayerPlayBut"
-        app:layout_constraintStart_toStartOf="@+id/audioPlayerPlayBut"
-        app:layout_constraintTop_toBottomOf="@+id/audioPlayerPlayBut" />
+        app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
+        app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
+        app:layout_constraintTop_toBottomOf="@+id/audioPlayerAddTrack" />
 </androidx.constraintlayout.widget.ConstraintLayout>

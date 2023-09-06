@@ -31,6 +31,10 @@
         <item name="android:src">@drawable/audioplayrplaybuttonnight</item>
     </style>
 
+    <style name="AudioPlayerPauseBut">
+        <item name="android:src">@drawable/pausebuttonnight</item>
+    </style>
+
     <style name="AudioPlayerLeftText">
         <item name="android:textColor">@color/YP_Text_Gray</item>
         <item name="android:textSize">@dimen/audioplayer_description_text_size</item>

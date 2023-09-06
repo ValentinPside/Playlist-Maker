@@ -1,14 +1,31 @@
 package com.example.playlistmaker
 
+
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AudioPlayerActivity : AppCompatActivity() {
+
+    companion object {
+        private const val STATE_DEFAULT = 0
+        private const val STATE_PREPARED = 1
+        private const val STATE_PLAYING = 2
+        private const val STATE_PAUSED = 3
+        private const val PLAY_DEBOUNCE_DELAY = 400L
+    }
+
+    private var playerState = STATE_DEFAULT
 
     private lateinit var albumCover: ImageView
     private lateinit var bigTrackName: TextView
@@ -19,6 +36,55 @@ class AudioPlayerActivity : AppCompatActivity() {
     private lateinit var lilReleaseDate: TextView
     private lateinit var lilPrimaryGenreName: TextView
     private lateinit var lilCountry: TextView
+    private lateinit var btPlay: ImageView
+    private lateinit var btPause: ImageView
+    private lateinit var url: String
+    private var currentTextTime: String = "00:00"
+    private var mediaPlayer = MediaPlayer()
+    private val handler = Handler(Looper.getMainLooper())
+
+    private fun preparePlayer() {
+        mediaPlayer.setDataSource(url)
+        mediaPlayer.prepareAsync()
+        mediaPlayer.setOnPreparedListener {
+            playerState = STATE_PREPARED
+        }
+        mediaPlayer.setOnCompletionListener {
+            showPlay()
+            playerState = STATE_PREPARED
+            currentTextTime = "00:00"
+            bigTrackTime.text = currentTextTime
+        }
+    }
+
+    private fun startPlayer() {
+        mediaPlayer.start()
+        showPause()
+        playerState = STATE_PLAYING
+    }
+
+    private fun pausePlayer() {
+        mediaPlayer.pause()
+        showPlay()
+        playerState = STATE_PAUSED
+        handler.removeCallbacks(playRunnable())
+    }
+
+    private fun playRunnable(): Runnable {
+        return object : Runnable {
+            override fun run() {
+                if(playerState == STATE_PLAYING){
+                    currentTextTime = SimpleDateFormat("mm:ss", Locale.getDefault()).format(mediaPlayer.currentPosition)
+                    bigTrackTime.text = currentTextTime
+                    handler.postDelayed(this, PLAY_DEBOUNCE_DELAY)
+                }
+            }
+        }
+    }
+
+    private fun playDebounce() {
+        handler.post(playRunnable())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,32 +101,69 @@ class AudioPlayerActivity : AppCompatActivity() {
         lilReleaseDate = findViewById(R.id.releaseDateRight)
         lilPrimaryGenreName = findViewById(R.id.primaryGenreNameRight)
         lilCountry = findViewById(R.id.trackCountryRight)
+        btPlay = findViewById(R.id.audioPlayerPlayBut)
+        btPause = findViewById(R.id.audioPlayerPauseBut)
 
         transferDateFromSearchActivity()
+        preparePlayer()
+
+        btPlay.setOnClickListener {
+            startPlayer()
+            playDebounce()
+        }
+        btPause.setOnClickListener {
+            pausePlayer()
+        }
 
     }
-    private fun transferDateFromSearchActivity() {
-        var arguments: Bundle? = intent.extras
 
-        Glide.with(applicationContext)
-            .load(arguments?.getString("album cover"))
-            .placeholder(R.drawable.bigplaceholder)
-            .centerCrop().transform(
-                RoundedCorners(
-                    applicationContext.resources.getDimensionPixelSize(
-                    R.dimen.big_corner_radius
+    override fun onPause() {
+        super.onPause()
+        pausePlayer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer.release()
+        handler.removeCallbacks(playRunnable())
+    }
+
+    private fun showPause(){
+        btPlay.visibility = View.GONE
+        btPause.visibility = View.VISIBLE
+    }
+
+    private fun showPlay(){
+        btPause.visibility = View.GONE
+        btPlay.visibility = View.VISIBLE
+    }
+
+    private fun transferDateFromSearchActivity() {
+        var data = intent.extras
+        var track = data?.getParcelable<Track>(PARCEL_TRACK_KEY)
+
+        if (track != null) {
+            Glide.with(applicationContext)
+                .load(track.artworkUrl100?.replaceAfterLast('/',"512x512bb.jpg"))
+                .placeholder(R.drawable.bigplaceholder)
+                .centerCrop().transform(
+                    RoundedCorners(
+                        applicationContext.resources.getDimensionPixelSize(
+                            R.dimen.big_corner_radius
+                        )
+                    )
                 )
-            )
-            )
-            .into(albumCover)
-        bigTrackName.text = arguments?.getString("name song")
-        bigBandName.text = arguments?.getString("band")
-        bigTrackTime.text = arguments?.getLong("duration")?.let { DateUtils.formatTime(it) }
-        lilTrackTime.text = arguments?.getLong("duration")?.let { DateUtils.formatTime(it) }
-        lilAlbumName.text = arguments?.getString("album")
-        lilReleaseDate.text = arguments?.getString("year")
-        lilPrimaryGenreName.text = arguments?.getString("genre")
-        lilCountry.text = arguments?.getString("country")
+                .into(albumCover)
+            bigTrackName.text = track.trackName
+            bigBandName.text = track.artistName
+            bigTrackTime.text = currentTextTime
+            lilTrackTime.text = track.trackTimeMillis?.let { DateUtils.formatTime(it) }
+            lilAlbumName.text = track.collectionName
+            lilReleaseDate.text = track.releaseDate?.let { DateUtils.formatDate(it) }
+            lilPrimaryGenreName.text = track.primaryGenreName
+            lilCountry.text = track.country
+            url = track.previewUrl.toString()
+        }
     }
 }
 

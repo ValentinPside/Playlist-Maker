@@ -5,16 +5,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
@@ -31,8 +30,16 @@ const val SEARCH_HISTORY_FILE_NAME = "search_history_file_name"
 
 const val SEARCH_HISTORY_TRACK_KEY = "search_history_track_key"
 
+const val PARCEL_TRACK_KEY = "parcel_track_key"
+
 
 class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
+
+    companion object {
+        private const val CLICK_DEBOUNCE_DELAY = 1000L
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
+    }
+
     private lateinit var searchTextField: EditText
     private lateinit var toolbar: Toolbar
     private lateinit var clearButton: ImageView
@@ -47,6 +54,11 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
     private lateinit var sharedPreferences : SharedPreferences
     private lateinit var searchHistory : SearchHistory
     private lateinit var searchHistoryTrackList : ArrayList<Track>
+    private lateinit var progressBar : ProgressBar
+
+    private var isClickAllowed = true
+
+    private val handler = Handler(Looper.getMainLooper())
 
     private val trackList = ArrayList<Track>()
 
@@ -80,20 +92,36 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
         }
     }
 
+    private fun clickDebounce() : Boolean {
+        val current = isClickAllowed
+        if (isClickAllowed) {
+            isClickAllowed = false
+            handler.postDelayed({ isClickAllowed = true }, CLICK_DEBOUNCE_DELAY)
+        }
+        return current
+    }
+
+    private val searchRunnable = Runnable { sendRequestToServer() }
+
+    private fun searchDebounce() {
+        handler.removeCallbacks(searchRunnable)
+        handler.postDelayed(searchRunnable, SEARCH_DEBOUNCE_DELAY)
+    }
+
     private fun sendRequestToServer() {
-        rvSearchTrack.visibility = View.VISIBLE
+        rvSearchTrack.visibility = View.GONE
         nothingFoundPlaceholder.visibility = View.GONE
         communicationProblemPlaceholder.visibility = View.GONE
+        progressBar.visibility = View.VISIBLE
         if (searchTextField.text.isNotEmpty()) {
             iTunesService.search(searchTextField.text.toString()).enqueue(object : Callback<SearchResponse> {
 
                 override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>){
+                    progressBar.visibility = View.GONE
                     if (response.code() == 200) {
                         trackList.clear()
                         if (response.body()?.results?.isNotEmpty() == true) {
-                            Log.d("Время Long: ", "${response.body()?.results!!.get(0)}")
                             trackList.addAll(response.body()?.results!!)
-                            Log.d("Время Long: ", "${trackList.get(0)}")
                             rvSearchTrack.visibility = View.VISIBLE
 
                         } else {
@@ -111,6 +139,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
                 }
 
                 override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
+                    progressBar.visibility = View.GONE
                     trackList.clear()
                     rvSearchTrack.visibility = View.GONE
                     communicationProblemPlaceholder.visibility = View.VISIBLE }
@@ -130,6 +159,7 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
         nothingFoundPlaceholder = findViewById(R.id.nothing_found_placeholder)
         communicationProblemPlaceholder = findViewById(R.id.communication_problem_placeholder)
         historyViewGroup = findViewById(R.id.history_group)
+        progressBar = findViewById(R.id.progressBar)
         sharedPreferences = getSharedPreferences(SEARCH_HISTORY_FILE_NAME, MODE_PRIVATE)
         searchHistory = SearchHistory(sharedPreferences)
         searchHistoryTrackList =
@@ -163,6 +193,9 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 historyViewGroup.visibility = if (searchTextField.hasFocus() && p0?.isEmpty() == true) View.VISIBLE else View.GONE
+                if (searchTextField.text.isNotBlank()){
+                    searchDebounce()
+                }
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -192,13 +225,6 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
 
         searchTextField.addTextChangedListener(simpleTextWatcher)
 
-        searchTextField.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                sendRequestToServer()
-                true
-            }
-            false
-        }
         communicationProblemButton.setOnClickListener {
             sendRequestToServer()
         }
@@ -214,18 +240,12 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.Listener {
     }
 
     override fun onClick(track: Track) {
-        searchHistory.write(sharedPreferences, searchHistoryTrackList, track)
-        historyAdapter.notifyDataSetChanged()
-        val intent = Intent(this@SearchActivity, AudioPlayerActivity::class.java)
-        intent
-            .putExtra("album cover", track.artworkUrl100.replaceAfterLast('/',"512x512bb.jpg"))
-            .putExtra("name song", track.trackName)
-            .putExtra("band", track.artistName)
-            .putExtra("duration", track.trackTimeMillis)
-            .putExtra("album", track.collectionName)
-            .putExtra("year", formatDate(track.releaseDate))
-            .putExtra("genre", track.primaryGenreName)
-            .putExtra("country", track.country)
-        startActivity(intent)
+        if (clickDebounce()) {
+            searchHistory.write(sharedPreferences, searchHistoryTrackList, track)
+            historyAdapter.notifyDataSetChanged()
+            val intent = Intent(this@SearchActivity, AudioPlayerActivity::class.java)
+            intent.putExtra(PARCEL_TRACK_KEY, track)
+            startActivity(intent)
+        }
     }
 }
