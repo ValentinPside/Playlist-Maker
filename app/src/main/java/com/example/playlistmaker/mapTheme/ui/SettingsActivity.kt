@@ -1,4 +1,4 @@
-package com.example.playlistmaker.settings.ui
+package com.example.playlistmaker.mapTheme.ui
 
 import android.content.Intent
 import android.net.Uri
