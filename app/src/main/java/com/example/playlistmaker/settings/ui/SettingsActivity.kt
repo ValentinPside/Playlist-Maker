@@ -1,4 +1,4 @@
-package com.example.playlistmaker.mapTheme.ui
+package com.example.playlistmaker.settings.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -7,19 +7,13 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.widget.SwitchCompat
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProvider
 import com.example.playlistmaker.R
-import com.example.playlistmaker.mapTheme.data.MapThemeRepositoryImpl
-import com.example.playlistmaker.mapTheme.domain.GetMapThemeUseCase
-import com.example.playlistmaker.mapTheme.domain.GetMapThemeUseCaseImpl
-import com.example.playlistmaker.mapTheme.domain.MapThemeRepository
-import com.example.playlistmaker.mapTheme.domain.SetMapThemeUseCase
-import com.example.playlistmaker.mapTheme.domain.SetMapThemeUseCaseImpl
 import com.example.playlistmaker.Application.App
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var settingsViewModel: SettingsViewModel
+    private val settingsViewModel: SettingsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +25,6 @@ class SettingsActivity : AppCompatActivity() {
         val supportView = findViewById<ImageView>(R.id.support)
         val forwardView = findViewById<ImageView>(R.id.forward)
         val themeSwitcher = findViewById<SwitchCompat>(R.id.switch2)
-
-        val mapThemeLocalDataSource: MapThemeRepository = MapThemeRepositoryImpl(this.applicationContext)
-        val getMapThemeUseCase: GetMapThemeUseCase = GetMapThemeUseCaseImpl(mapThemeLocalDataSource)
-        val setMapThemeUseCase: SetMapThemeUseCase = SetMapThemeUseCaseImpl(mapThemeLocalDataSource)
-
-        settingsViewModel = ViewModelProvider(this, SettingsViewModelFactory(getMapThemeUseCase, setMapThemeUseCase))[SettingsViewModel::class.java]
 
         settingsViewModel.observeViewState().observe(this) {
             subscribeSwitchTheme(it.switchTheme)

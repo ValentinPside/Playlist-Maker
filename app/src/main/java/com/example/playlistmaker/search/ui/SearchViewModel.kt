@@ -4,18 +4,11 @@ package com.example.playlistmaker.search.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.playlistmaker.search.data.remote.ITunesSearchAPI
-import com.example.playlistmaker.search.data.SearchResponse
 import com.example.playlistmaker.search.domain.ClearTracksHistoryUseCase
 import com.example.playlistmaker.search.domain.GetTracksHistoryUseCase
 import com.example.playlistmaker.search.domain.SearchTracksUseCase
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.search.domain.WriteTracksHistoryUseCase
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchViewModel (
     private val getTracksHistoryUseCase: GetTracksHistoryUseCase,
