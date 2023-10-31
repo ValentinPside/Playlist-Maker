@@ -14,28 +14,14 @@ import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.playlistmaker.*
 import com.example.playlistmaker.extension.visibleOrGone
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.player.ui.AudioPlayerActivity
-import com.example.playlistmaker.search.data.SearchTracksRepositoryImpl
-import com.example.playlistmaker.search.data.remote.ITunesSearchAPI
-import com.example.playlistmaker.search.data.remote.SearchHistoryRemoteDataSource
-import com.example.playlistmaker.search.data.remote.SearchHistoryRemoteDataSourceImpl
-import com.example.playlistmaker.search.domain.ClearTracksHistoryUseCase
-import com.example.playlistmaker.search.domain.ClearTracksHistoryUseCaseImpl
-import com.example.playlistmaker.search.domain.GetTracksHistoryUseCase
-import com.example.playlistmaker.search.domain.GetTracksHistoryUseCaseImpl
-import com.example.playlistmaker.search.domain.SearchTracksUseCase
-import com.example.playlistmaker.search.domain.SearchTracksUseCaseImpl
-import com.example.playlistmaker.search.domain.WriteTracksHistoryUseCase
-import com.example.playlistmaker.search.domain.WriteTracksHistoryUseCaseImpl
 import com.example.playlistmaker.search.ui.adapters.SearchAdapter
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val SEARCH_HISTORY_FILE_NAME = "search_history_file_name"
 
@@ -44,8 +30,7 @@ const val PARCEL_TRACK_KEY = "parcel_track_key"
 
 
 class SearchActivity: AppCompatActivity() {
-
-    private lateinit var searchViewModel: SearchViewModel
+    private val searchViewModel: SearchViewModel by viewModel()
 
     companion object {
         private const val CLICK_DEBOUNCE_DELAY = 1000L
@@ -108,43 +93,9 @@ class SearchActivity: AppCompatActivity() {
         searchViewModel.onSearchChanged(searchTextField.text.toString())
     }
 
-    private fun initDeps(){
-
-        //remote
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://itunes.apple.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val iTunesService = retrofit.create(ITunesSearchAPI::class.java)
-        val remoteDataStore: SearchHistoryRemoteDataSource = SearchHistoryRemoteDataSourceImpl(iTunesService)
-
-        //local
-        val sharedPreferences = getSharedPreferences(SEARCH_HISTORY_FILE_NAME, MODE_PRIVATE)
-
-        //repository
-        val searchHistoryRepository = SearchTracksRepositoryImpl(sharedPreferences, remoteDataStore)
-
-        //use cases
-        val getTracksHistoryUseCase: GetTracksHistoryUseCase = GetTracksHistoryUseCaseImpl(searchHistoryRepository)
-        val clearTracksHistoryUseCase: ClearTracksHistoryUseCase = ClearTracksHistoryUseCaseImpl(searchHistoryRepository)
-        val writeHistoryUseCase: WriteTracksHistoryUseCase = WriteTracksHistoryUseCaseImpl(searchHistoryRepository)
-        val searchTracksUseCase: SearchTracksUseCase = SearchTracksUseCaseImpl(searchHistoryRepository)
-
-        val viewModelFactory = SearchViewModelFactory(
-            getTracksHistoryUseCase,
-            clearTracksHistoryUseCase,
-            writeHistoryUseCase,
-            searchTracksUseCase
-        )
-
-        searchViewModel = ViewModelProvider(this, viewModelFactory)[SearchViewModel::class.java]
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-        initDeps()
         initViews()
         val communicationProblemButton = findViewById<Button>(R.id.update_button)
         val clearHistoryButton = findViewById<Button>(R.id.button)
@@ -163,6 +114,7 @@ class SearchActivity: AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {}
         })
+
         searchTextField.addTextChangedListener(simpleTextWatcher)
 
         initTrackList()

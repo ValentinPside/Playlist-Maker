@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.playlistmaker.R
 import com.example.playlistmaker.search.ui.SearchActivity
-import com.example.playlistmaker.mapTheme.ui.SettingsActivity
 import com.example.playlistmaker.sharing.ui.MediatecaActivity
+import com.example.playlistmaker.settings.ui.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
     private fun navigateTo(clazz: Class<out AppCompatActivity>) {
