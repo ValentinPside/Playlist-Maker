@@ -22,4 +22,9 @@
     <style name="BackIcon">
         <item name="navigationIcon">@drawable/vector_dark</item>
     </style>
+
+    <style name="TabText">
+        <item name="tabTextColor">@color/YP_White</item>
+        <item name="tabIndicatorColor">@color/YP_White</item>
+    </style>
 </resources>

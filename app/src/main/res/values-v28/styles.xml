@@ -23,4 +23,9 @@
     <style name="BackIcon">
         <item name="navigationIcon">@drawable/vector</item>
     </style>
+
+    <style name="TabText">
+        <item name="tabTextColor">@color/YP_Black</item>
+        <item name="tabIndicatorColor">@color/YP_Black</item>
+    </style>
 </resources>
