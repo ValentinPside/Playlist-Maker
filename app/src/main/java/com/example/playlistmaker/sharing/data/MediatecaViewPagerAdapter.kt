@@ -14,8 +14,8 @@ class MediatecaViewPagerAdapter (fragmentManager: FragmentManager, lifecycle: Li
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            0 -> TracksFragment()
-            else -> PlayListsFragment()
+            0 -> TracksFragment.newInstance()
+            else -> PlayListsFragment.newInstance()
         }
     }
 }

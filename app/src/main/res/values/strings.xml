@@ -21,4 +21,7 @@
     <string name="update">Обновить</string>
     <string name="mediateca_tracks_text">Ваша медиатека пуста \n</string>
     <string name="mediateca_playlist_text">Вы не создали \n ни одного плейлиста</string>
+    <string name="mediateca_first_fragment_name">Избранные треки</string>
+    <string name="mediateca_second_fragment_name">Плейлисты</string>
+
 </resources>
