@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val searchTracksRepositoryModule = module {
 
-    factory<SearchTracksRepository> {
+    single<SearchTracksRepository> {
         SearchTracksRepositoryImpl(provideSharedPref(androidApplication()), get())
     }
 
