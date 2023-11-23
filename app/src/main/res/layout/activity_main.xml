@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.fragment.app.FragmentContainerView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/title"
-        android:textAppearance="@style/title"
-        style="@style/MessageTextStyle"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        style="@style/bottom_navigation_view"/>
 
-    <Button style="@style/MainButtonStyle"
-        android:id="@+id/button1"
-        android:layout_marginTop="40dp"
-        android:text="@string/search"
-        app:icon="@drawable/search" />
-
-    <Button style="@style/MainButtonStyle"
-        android:id="@+id/button2"
-        android:text="@string/library"
-        app:icon="@drawable/library" />
-
-    <Button style="@style/MainButtonStyle"
-        android:id="@+id/button3"
-        android:layout_marginBottom="28dp"
-        android:text="@string/settings"
-        app:icon="@drawable/settings" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

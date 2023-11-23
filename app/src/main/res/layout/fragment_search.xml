@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:theme="@style/SearchActivityTop"
     android:visibility="visible"
-    tools:context=".SearchActivity">
+    tools:context=".search.ui.SearchFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,8 +15,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/BackIcon">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
