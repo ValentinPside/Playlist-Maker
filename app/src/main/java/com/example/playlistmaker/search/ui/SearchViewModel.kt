@@ -17,6 +17,8 @@ class SearchViewModel (
     private val searchTracksUseCase: SearchTracksUseCase
 ) : ViewModel() {
 
+    private var screenPaused = false
+
     private val viewState = MutableLiveData(ViewState())
 
     fun observe(): LiveData<ViewState> = viewState
@@ -34,6 +36,9 @@ class SearchViewModel (
     }
 
     fun onSearchChanged(query : String) {
+        if(screenPaused){
+            return
+        }
         searchTracksUseCase.invoke(query, ::showCommunicationProblemPlaceholder) { trackList ->
                 val placeHolderState = if (trackList.isNotEmpty()) PlaceHolderState.SEARCH_TRACK else PlaceHolderState.NOTHING_FOUND
                 viewState.value = viewState.value?.copy(trackList = trackList, placeHolderState = placeHolderState)
@@ -53,6 +58,14 @@ class SearchViewModel (
         val trackList = viewState.value?.searchHistoryTrackList ?: emptyList()
         writeTracksHistoryUseCase.write(trackList, track)
         getSearchHistoryTrackList()
+    }
+
+    fun onFragmentResume(){
+        screenPaused = false
+    }
+
+    fun onFragmentPaused(){
+        screenPaused = true
     }
 
 }

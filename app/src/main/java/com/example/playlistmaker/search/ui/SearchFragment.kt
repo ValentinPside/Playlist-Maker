@@ -2,6 +2,7 @@ package com.example.playlistmaker.search.ui
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Insets
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -13,11 +14,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.Group
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.playlistmaker.databinding.FragmentSearchBinding
 import com.example.playlistmaker.extension.visibleOrGone
+import com.example.playlistmaker.main.ui.MainActivity
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.ui.adapters.SearchAdapter
@@ -32,11 +36,6 @@ const val PARCEL_TRACK_KEY = "parcel_track_key"
 class SearchFragment: androidx.fragment.app.Fragment() {
     private val searchViewModel: SearchViewModel by viewModel()
 
-    companion object {
-        private const val CLICK_DEBOUNCE_DELAY = 1000L
-        private const val SEARCH_DEBOUNCE_DELAY = 2000L
-    }
-
     private lateinit var searchTextField: EditText
     private lateinit var toolbar: Toolbar
     private lateinit var clearButton: ImageView
@@ -49,6 +48,7 @@ class SearchFragment: androidx.fragment.app.Fragment() {
     private lateinit var historyAdapter: SearchAdapter
     private lateinit var historyViewGroup: Group
     private lateinit var progressBar: ProgressBar
+
 
     private var isClickAllowed = true
 
@@ -101,7 +101,6 @@ class SearchFragment: androidx.fragment.app.Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -161,6 +160,17 @@ class SearchFragment: androidx.fragment.app.Fragment() {
             searchAdapter.tracks = it.trackList
             searchAdapter.notifyDataSetChanged()
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        searchViewModel.onFragmentResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        searchViewModel.onFragmentPaused()
     }
 
     override fun onDestroyView() {
@@ -213,4 +223,10 @@ class SearchFragment: androidx.fragment.app.Fragment() {
             startActivity(intent)
         }
     }
+
+    companion object {
+        private const val CLICK_DEBOUNCE_DELAY = 1000L
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
+    }
+
 }

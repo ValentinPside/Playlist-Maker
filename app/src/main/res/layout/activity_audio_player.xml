@@ -53,6 +53,7 @@
         android:gravity="start"
         android:text="TextView"
         android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
         app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
         app:layout_constraintTop_toBottomOf="@+id/audioplayer_album_cover" />
 
