@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="start"
+        android:maxLines="1"
         android:text="TextView"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
@@ -60,12 +61,14 @@
     <TextView
         android:id="@+id/audioplayer_band_name"
         style="@style/YPTextBW"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="start"
+        android:maxLines="1"
         android:text="TextView"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/audioplayer_track_name"
         app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
         app:layout_constraintTop_toBottomOf="@+id/audioplayer_track_name" />
 
@@ -194,7 +197,7 @@
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
         app:layout_constraintTop_toBottomOf="@+id/audioplayer_band_name"
-        app:srcCompat="@drawable/audioplayeraddtrack" />
+        style="@style/AudioPlayerLeftButton"/>
 
     <ImageView
         android:id="@+id/audioPlayerLikeTrack"
@@ -203,7 +206,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/audioPlayerAddTrack"
         app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
         app:layout_constraintTop_toTopOf="@+id/audioPlayerAddTrack"
-        app:srcCompat="@drawable/audioplayerliketrack" />
+        style="@style/AudioPlayerRightButton"/>
 
     <TextView
         android:id="@+id/actualTrackTime"

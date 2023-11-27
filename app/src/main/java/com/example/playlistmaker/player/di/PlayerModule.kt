@@ -2,8 +2,6 @@ package com.example.playlistmaker.player.di
 
 
 import android.media.MediaPlayer
-import com.example.playlistmaker.mapTheme.domain.GetMapThemeUseCase
-import com.example.playlistmaker.mapTheme.domain.GetMapThemeUseCaseImpl
 import com.example.playlistmaker.player.ui.AudioPlayerViewModel
 import com.example.playlistmaker.search.domain.models.Track
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,7 +12,7 @@ val playerViewModelModule = module {
         AudioPlayerViewModel(track)
     }
 
-    factory {
+    single<MediaPlayer> {
         MediaPlayer()
     }
 }

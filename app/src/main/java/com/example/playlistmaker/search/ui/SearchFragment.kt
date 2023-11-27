@@ -163,16 +163,6 @@ class SearchFragment: androidx.fragment.app.Fragment() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        searchViewModel.onFragmentResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        searchViewModel.onFragmentPaused()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

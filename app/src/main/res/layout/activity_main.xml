@@ -27,6 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
+        android:elevation="0dp"
         style="@style/bottom_navigation_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

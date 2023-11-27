@@ -17,5 +17,5 @@
     <color name="YP_Light_Gray">#E6E8EB</color>
     <color name="dark_theme_item">#1A1B22</color>
     <color name="system_PM">#3772E7</color>
-
+    <color name="system_dark">#121212</color>
 </resources>

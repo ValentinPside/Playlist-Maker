@@ -38,7 +38,7 @@ class AudioPlayerActivity: AppCompatActivity() {
     private lateinit var btPause: ImageView
     private lateinit var url: String
     private lateinit var currentTextTime: String
-    private val mediaPlayer: MediaPlayer by inject()
+    private lateinit var mediaPlayer: MediaPlayer
     private val handler = Handler(Looper.getMainLooper())
 
     private fun preparePlayer() {
@@ -88,8 +88,10 @@ class AudioPlayerActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio_player)
 
-        val track = requireNotNull(intent.extras?.getParcelable<Track>(PARCEL_TRACK_KEY))
+        mediaPlayer = MediaPlayer()
         currentTextTime = getString(R.string.zero_time)
+
+        val track = requireNotNull(intent.extras?.getParcelable<Track>(PARCEL_TRACK_KEY))
 
         val playerViewModel: AudioPlayerViewModel by viewModel {
             parametersOf(track)

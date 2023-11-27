@@ -48,20 +48,30 @@
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
-    android:maxLines="1"
-    android:ellipsize="end"
 
     <style name="YPTextBW">
         <item name="android:textColor">@color/YP_White</item>
     </style>
 
     <style name="bottom_navigation_view" >
-        <item name="android:fontFamily">@font/ys_display_regular</item>
         <item name="android:textColor">@color/YP_White</item>
-        <item name="android:background">@color/YP_Black</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:background">@color/YP_Black</item>
         <item name="itemIconTint">@drawable/bottom_navigation_tab_bar_dark</item>
         <item name="itemTextColor">@drawable/bottom_navigation_tab_bar_dark</item>
+    </style>
+
+    <style name="AudioPlayerRightButton">
+        <item name="android:src">@drawable/player_like_button</item>
+    </style>
+
+    <style name="AudioPlayerLeftButton">
+        <item name="android:src">@drawable/player_add_button</item>
+    </style>
+
+    <style name="TabText">
+        <item name="tabTextColor">@color/YP_White</item>
+        <item name="tabIndicatorColor">@color/YP_White</item>
     </style>
 
 </resources>
