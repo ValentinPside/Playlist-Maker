@@ -23,5 +23,6 @@
     <string name="mediateca_playlist_text">Вы не создали \n ни одного плейлиста</string>
     <string name="mediateca_first_fragment_name">Избранные треки</string>
     <string name="mediateca_second_fragment_name">Плейлисты</string>
+    <string name="zero_time">00:00</string>
 
 </resources>

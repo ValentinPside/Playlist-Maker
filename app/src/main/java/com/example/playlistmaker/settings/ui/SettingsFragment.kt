@@ -2,31 +2,42 @@ package com.example.playlistmaker.settings.ui
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import androidx.appcompat.widget.SwitchCompat
-import androidx.appcompat.widget.Toolbar
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.playlistmaker.R
-import com.example.playlistmaker.Application.App
+import com.example.playlistmaker.application.App
+import com.example.playlistmaker.databinding.FragmentSettingsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsFragment : Fragment() {
 
     private val settingsViewModel: SettingsViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+    private var _binding: FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
 
-        val toolbar = findViewById<Toolbar>(R.id.settings_toolbar)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
-        val shareView = findViewById<ImageView>(R.id.share)
-        val supportView = findViewById<ImageView>(R.id.support)
-        val forwardView = findViewById<ImageView>(R.id.forward)
-        val themeSwitcher = findViewById<SwitchCompat>(R.id.switch2)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
-        settingsViewModel.observeViewState().observe(this) {
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val shareView = binding.share
+        val supportView = binding.support
+        val forwardView = binding.forward
+        val themeSwitcher = binding.switch2
+
+        settingsViewModel.observeViewState().observe(viewLifecycleOwner) { it ->
             subscribeSwitchTheme(it.switchTheme)
             themeSwitcher.isChecked = it.switchTheme
 
@@ -56,6 +67,11 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun subscribeOnSendEmail(){
             val subject = getString(R.string.SettingsSubject)
             val message = getString(R.string.SettingsSubText)
@@ -83,6 +99,6 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun subscribeSwitchTheme(isDarkTheme: Boolean){
-        (application as App).switchTheme(isDarkTheme)
+        (requireActivity().application as App).switchTheme(isDarkTheme)
     }
 }

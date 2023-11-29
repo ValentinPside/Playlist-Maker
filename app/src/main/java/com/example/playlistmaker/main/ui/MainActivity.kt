@@ -1,35 +1,32 @@
 package com.example.playlistmaker.main.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.example.playlistmaker.application.App
 import com.example.playlistmaker.R
-import com.example.playlistmaker.search.ui.SearchActivity
-import com.example.playlistmaker.sharing.ui.MediatecaActivity
-import com.example.playlistmaker.settings.ui.SettingsActivity
+import com.example.playlistmaker.extension.visibleOrGone
+import com.example.playlistmaker.mapTheme.domain.GetMapThemeUseCase
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
-    private fun navigateTo(clazz: Class<out AppCompatActivity>) {
-        val intent = Intent(this, clazz)
-        startActivity(intent)
-    }
+
+    private val getMapThemeUseCase: GetMapThemeUseCase by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mediatecaButton = findViewById<Button>(R.id.button2)
-        val searchButton = findViewById<Button>(R.id.button1)
-        val settingsButton = findViewById<Button>(R.id.button3)
+        (application as App).switchTheme(getMapThemeUseCase().isDarkTheme)
 
-        mediatecaButton.setOnClickListener {
-            navigateTo(MediatecaActivity::class.java)
-        }
-        searchButton.setOnClickListener {
-            navigateTo(SearchActivity::class.java)
-        }
-        settingsButton.setOnClickListener {
-            navigateTo(SettingsActivity::class.java)
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.setupWithNavController(navController)
+        bottomNavigationView.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent))
     }
 }

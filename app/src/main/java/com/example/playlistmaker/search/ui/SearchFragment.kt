@@ -2,22 +2,26 @@ package com.example.playlistmaker.search.ui
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Insets
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.Group
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.playlistmaker.*
+import com.example.playlistmaker.databinding.FragmentSearchBinding
 import com.example.playlistmaker.extension.visibleOrGone
+import com.example.playlistmaker.main.ui.MainActivity
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.ui.adapters.SearchAdapter
@@ -29,13 +33,8 @@ const val SEARCH_HISTORY_FILE_NAME = "search_history_file_name"
 const val PARCEL_TRACK_KEY = "parcel_track_key"
 
 
-class SearchActivity: AppCompatActivity() {
+class SearchFragment: androidx.fragment.app.Fragment() {
     private val searchViewModel: SearchViewModel by viewModel()
-
-    companion object {
-        private const val CLICK_DEBOUNCE_DELAY = 1000L
-        private const val SEARCH_DEBOUNCE_DELAY = 2000L
-    }
 
     private lateinit var searchTextField: EditText
     private lateinit var toolbar: Toolbar
@@ -49,6 +48,7 @@ class SearchActivity: AppCompatActivity() {
     private lateinit var historyAdapter: SearchAdapter
     private lateinit var historyViewGroup: Group
     private lateinit var progressBar: ProgressBar
+
 
     private var isClickAllowed = true
 
@@ -93,14 +93,25 @@ class SearchActivity: AppCompatActivity() {
         searchViewModel.onSearchChanged(searchTextField.text.toString())
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
-        initViews()
-        val communicationProblemButton = findViewById<Button>(R.id.update_button)
-        val clearHistoryButton = findViewById<Button>(R.id.button)
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
 
-        historyRecyclerView.layoutManager = LinearLayoutManager(this)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        val communicationProblemButton = binding.updateButton
+        val clearHistoryButton = binding.button
+
+        historyRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         searchTextField.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
@@ -122,9 +133,8 @@ class SearchActivity: AppCompatActivity() {
 
         clearButton.setOnClickListener {
             searchTextField.setText("")
-            val inputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-            val view: View? = this.currentFocus
+            val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            val view: View? = this.requireView().findFocus()
             inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
 
             searchViewModel.getSearchHistoryTrackList()
@@ -139,7 +149,7 @@ class SearchActivity: AppCompatActivity() {
             sendRequestToServer()
         }
 
-        searchViewModel.observe().observe(this) {
+        searchViewModel.observe().observe(viewLifecycleOwner) {
             historyViewGroup.visibleOrGone(it.searchHistoryTrackList.isNotEmpty() && it.placeHolderState == PlaceHolderState.HISTORY)
 
             updateStateHolderVisible(it.placeHolderState)
@@ -153,17 +163,20 @@ class SearchActivity: AppCompatActivity() {
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun initViews() {
-        toolbar = findViewById(R.id.toolbar)
-        toolbar.setNavigationOnClickListener { onBackPressed() }
-        clearButton = findViewById(R.id.clear_button)
-        searchTextField = findViewById(R.id.search_field)
-        rvSearchTrack = findViewById(R.id.rv_search_track)
-        historyRecyclerView = findViewById(R.id.recyclerView)
-        nothingFoundPlaceholder = findViewById(R.id.nothing_found_placeholder)
-        communicationProblemPlaceholder = findViewById(R.id.communication_problem_placeholder)
-        historyViewGroup = findViewById(R.id.history_group)
-        progressBar = findViewById(R.id.progressBar)
+        clearButton = binding.clearButton
+        searchTextField = binding.searchField
+        rvSearchTrack = binding.rvSearchTrack
+        historyRecyclerView = binding.recyclerView
+        nothingFoundPlaceholder = binding.nothingFoundPlaceholder
+        communicationProblemPlaceholder = binding.communicationProblemPlaceholder
+        historyViewGroup = binding.historyGroup
+        progressBar = binding.progressBar
     }
 
     private fun clearButtonVisibility(s: CharSequence?): Int {
@@ -195,10 +208,15 @@ class SearchActivity: AppCompatActivity() {
     private fun onClick(track: Track) {
         if (clickDebounce()) {
             searchViewModel.writeHistory(track)
-
-            val intent = Intent(this@SearchActivity, AudioPlayerActivity::class.java)
+            val intent = Intent(requireContext(), AudioPlayerActivity::class.java)
             intent.putExtra(PARCEL_TRACK_KEY, track)
             startActivity(intent)
         }
     }
+
+    companion object {
+        private const val CLICK_DEBOUNCE_DELAY = 1000L
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
+    }
+
 }

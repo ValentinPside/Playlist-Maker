@@ -9,11 +9,11 @@ class MapThemeRepositoryImpl(context: Context) : MapThemeRepository {
 
     override fun get(): MapTheme {
         val isDarkTheme = pref.getBoolean(MAP_THEME_KEY, false)
-        return MapTheme(darkTheme = isDarkTheme)
+        return MapTheme(isDarkTheme = isDarkTheme)
     }
 
     override fun setMapTheme(mapTheme: MapTheme) {
-        pref.edit().putBoolean(MAP_THEME_KEY, mapTheme.darkTheme).apply()
+        pref.edit().putBoolean(MAP_THEME_KEY, mapTheme.isDarkTheme).apply()
     }
 
     companion object {

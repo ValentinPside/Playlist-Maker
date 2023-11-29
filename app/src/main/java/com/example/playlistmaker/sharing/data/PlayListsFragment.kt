@@ -15,10 +15,6 @@ class PlayListsFragment : Fragment() {
     private val playListFragmentViewModel: PlayListFragmentViewModel by viewModel{
         parametersOf()}
 
-    companion object {
-        fun newInstance() = PlayListsFragment()
-    }
-
     private var _binding: MediatecaPlaylistsBinding? = null
     private val binding get() = _binding!!
 
@@ -37,6 +33,10 @@ class PlayListsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance() = PlayListsFragment()
     }
 
 }

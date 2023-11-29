@@ -22,7 +22,7 @@ class SettingsViewModel(
     }
 
     private fun gepMapTheme() {
-        viewState.value = viewState.value?.copy(switchTheme = getMapThemeUseCase().darkTheme, action = null)
+        viewState.value = viewState.value?.copy(switchTheme = getMapThemeUseCase().isDarkTheme, action = null)
     }
 
     fun sendEmail(){
@@ -39,7 +39,7 @@ class SettingsViewModel(
 
     fun switchTheme(checked : Boolean){
         val mapTheme = MapTheme(checked)
-        setMapThemeUseCase.invoke(mapTheme)
+        setMapThemeUseCase(mapTheme)
         gepMapTheme()
     }
 }

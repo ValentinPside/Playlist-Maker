@@ -15,20 +15,13 @@ import com.example.playlistmaker.extension.DateUtils
 import com.example.playlistmaker.R
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.search.ui.PARCEL_TRACK_KEY
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AudioPlayerActivity: AppCompatActivity() {
-
-    companion object {
-        private const val STATE_DEFAULT = 0
-        private const val STATE_PREPARED = 1
-        private const val STATE_PLAYING = 2
-        private const val STATE_PAUSED = 3
-        private const val PLAY_DEBOUNCE_DELAY = 400L
-    }
 
     private var playerState = STATE_DEFAULT
 
@@ -44,8 +37,8 @@ class AudioPlayerActivity: AppCompatActivity() {
     private lateinit var btPlay: ImageView
     private lateinit var btPause: ImageView
     private lateinit var url: String
-    private var currentTextTime: String = "00:00"
-    private var mediaPlayer = MediaPlayer()
+    private lateinit var currentTextTime: String
+    private lateinit var mediaPlayer: MediaPlayer
     private val handler = Handler(Looper.getMainLooper())
 
     private fun preparePlayer() {
@@ -57,7 +50,7 @@ class AudioPlayerActivity: AppCompatActivity() {
         mediaPlayer.setOnCompletionListener {
             showPlay()
             playerState = STATE_PREPARED
-            currentTextTime = "00:00"
+            currentTextTime = getString(R.string.zero_time)
             bigTrackTime.text = currentTextTime
         }
     }
@@ -94,6 +87,9 @@ class AudioPlayerActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio_player)
+
+        mediaPlayer = MediaPlayer()
+        currentTextTime = getString(R.string.zero_time)
 
         val track = requireNotNull(intent.extras?.getParcelable<Track>(PARCEL_TRACK_KEY))
 
@@ -178,6 +174,14 @@ class AudioPlayerActivity: AppCompatActivity() {
         lilPrimaryGenreName.text = track.primaryGenreName
         lilCountry.text = track.country
         url = track.previewUrl.toString()
+    }
+
+    companion object {
+        private const val STATE_DEFAULT = 0
+        private const val STATE_PREPARED = 1
+        private const val STATE_PLAYING = 2
+        private const val STATE_PAUSED = 3
+        private const val PLAY_DEBOUNCE_DELAY = 400L
     }
 
 }
