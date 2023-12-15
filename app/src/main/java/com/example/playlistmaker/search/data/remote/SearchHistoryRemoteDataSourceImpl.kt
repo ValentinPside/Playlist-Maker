@@ -1,6 +1,7 @@
 package com.example.playlistmaker.search.data.remote
 
 import com.example.playlistmaker.search.data.SearchResponse
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 
 class SearchHistoryRemoteDataSourceImpl(
@@ -8,7 +9,7 @@ class SearchHistoryRemoteDataSourceImpl(
 ) : SearchHistoryRemoteDataSource {
 
 
-    override fun search(query: String): Call<SearchResponse> {
+    override suspend fun search(query: String): SearchResponse {
         return api.search(query)
     }
 }

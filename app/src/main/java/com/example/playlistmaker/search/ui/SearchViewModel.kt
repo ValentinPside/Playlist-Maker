@@ -1,14 +1,24 @@
 package com.example.playlistmaker.search.ui
 
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.playlistmaker.search.domain.ClearTracksHistoryUseCase
 import com.example.playlistmaker.search.domain.GetTracksHistoryUseCase
 import com.example.playlistmaker.search.domain.SearchTracksUseCase
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.search.domain.WriteTracksHistoryUseCase
+import debounce
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SearchViewModel (
     private val getTracksHistoryUseCase: GetTracksHistoryUseCase,
@@ -17,31 +27,34 @@ class SearchViewModel (
     private val searchTracksUseCase: SearchTracksUseCase
 ) : ViewModel() {
 
-    private val viewState = MutableLiveData(ViewState())
+    private val viewState = MutableStateFlow(ViewState())
 
-    fun observe(): LiveData<ViewState> = viewState
+    fun observe() = viewState.asStateFlow()
 
     init {
         getSearchHistoryTrackList()
     }
 
     fun showProgressBar(){
-        viewState.value = viewState.value?.copy(placeHolderState = PlaceHolderState.LOADING)
+        viewState.update { it.copy(placeHolderState = PlaceHolderState.LOADING) }
     }
 
     fun showCommunicationProblemPlaceholder(){
-        viewState.value = viewState.value?.copy(placeHolderState = PlaceHolderState.PROBLEM)
+        viewState.update { it.copy(placeHolderState = PlaceHolderState.PROBLEM) }
     }
 
-    fun onSearchChanged(query : String) {
-        searchTracksUseCase.invoke(query, ::showCommunicationProblemPlaceholder) { trackList ->
+    fun onSearchChanged(query: String) {
+        viewModelScope.launch {
+            showProgressBar()
+            searchTracksUseCase.invoke(query, ::showCommunicationProblemPlaceholder) { trackList ->
                 val placeHolderState = if (trackList.isNotEmpty()) PlaceHolderState.SEARCH_TRACK else PlaceHolderState.NOTHING_FOUND
-                viewState.value = viewState.value?.copy(trackList = trackList, placeHolderState = placeHolderState)
+                viewState.update { it.copy(trackList = trackList, placeHolderState = placeHolderState) }
+            }
         }
     }
 
     fun getSearchHistoryTrackList(){
-        viewState.value = viewState.value?.copy(searchHistoryTrackList = getTracksHistoryUseCase.get(), placeHolderState = PlaceHolderState.HISTORY)
+        viewState.update { it.copy(searchHistoryTrackList = getTracksHistoryUseCase.get(), placeHolderState = PlaceHolderState.HISTORY) }
     }
 
     fun clearHistory() {
@@ -50,7 +63,7 @@ class SearchViewModel (
     }
 
     fun writeHistory(track: Track) {
-        val trackList = viewState.value?.searchHistoryTrackList ?: emptyList()
+        val trackList = viewState.value.searchHistoryTrackList
         writeTracksHistoryUseCase.write(trackList, track)
         getSearchHistoryTrackList()
     }
