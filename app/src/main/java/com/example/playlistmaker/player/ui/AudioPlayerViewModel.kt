@@ -1,8 +1,6 @@
 package com.example.playlistmaker.player.ui
 
 import android.media.MediaPlayer
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.playlistmaker.search.domain.models.Track
@@ -56,9 +54,11 @@ class AudioPlayerViewModel(
         mediaPlayer.setDataSource(track.previewUrl)
         mediaPlayer.prepareAsync()
         mediaPlayer.setOnPreparedListener {
+            timerJob?.cancel()
             viewState.update { it.copy(playerState = PlayerState.Prepared()) }
         }
         mediaPlayer.setOnCompletionListener {
+            timerJob?.cancel()
             viewState.update { it.copy(playerState = PlayerState.Prepared()) }
         }
     }

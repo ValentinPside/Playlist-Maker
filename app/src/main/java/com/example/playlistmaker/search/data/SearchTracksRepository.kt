@@ -5,10 +5,9 @@ import com.example.playlistmaker.search.data.remote.SearchHistoryRemoteDataSourc
 import com.example.playlistmaker.search.domain.models.Track
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.lang.Exception
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 
 interface SearchTracksRepository {
 
@@ -61,31 +60,10 @@ class SearchTracksRepositoryImpl(
     }
 
     override suspend fun search(query: String, onSuccess: (List<Track>) -> Unit, onError: () -> Unit) {
-        try {
-            val result = remoteDataStore.search(query)
-            onSuccess(result.results)
-        } catch (e: Exception) {
-            onError.invoke()
-        }
-//
-//
-//        val callback = object: Callback<SearchResponse> {
-//            override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
-//                if (response.code() == 200) {
-//                    val tracks = response.body()?.results
-//                    tracks?.let(onSuccess) ?: onError.invoke()
-//                } else {
-//                    onError.invoke()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
-//                onError.invoke()
-//            }
-//
-//        }
-//
-//        result.enqueue(callback)
+        remoteDataStore.search(query)
+            .flowOn(Dispatchers.IO)
+            .catch { onError.invoke() }
+            .collect { onSuccess(it.results) }
     }
 
 

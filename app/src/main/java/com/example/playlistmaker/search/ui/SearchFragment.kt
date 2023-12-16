@@ -2,21 +2,15 @@ package com.example.playlistmaker.search.ui
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Insets
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.Group
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -25,7 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.playlistmaker.databinding.FragmentSearchBinding
 import com.example.playlistmaker.extension.visibleOrGone
-import com.example.playlistmaker.main.ui.MainActivity
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.ui.adapters.SearchAdapter
