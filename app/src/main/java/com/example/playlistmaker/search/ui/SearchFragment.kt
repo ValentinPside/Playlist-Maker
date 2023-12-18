@@ -2,10 +2,7 @@ package com.example.playlistmaker.search.ui
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Insets
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -14,17 +11,19 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.Group
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.playlistmaker.databinding.FragmentSearchBinding
 import com.example.playlistmaker.extension.visibleOrGone
-import com.example.playlistmaker.main.ui.MainActivity
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.ui.adapters.SearchAdapter
+import debounce
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val SEARCH_HISTORY_FILE_NAME = "search_history_file_name"
@@ -37,7 +36,6 @@ class SearchFragment: androidx.fragment.app.Fragment() {
     private val searchViewModel: SearchViewModel by viewModel()
 
     private lateinit var searchTextField: EditText
-    private lateinit var toolbar: Toolbar
     private lateinit var clearButton: ImageView
     private lateinit var rvSearchTrack: RecyclerView
     private lateinit var historyRecyclerView: RecyclerView
@@ -48,11 +46,7 @@ class SearchFragment: androidx.fragment.app.Fragment() {
     private lateinit var historyAdapter: SearchAdapter
     private lateinit var historyViewGroup: Group
     private lateinit var progressBar: ProgressBar
-
-
-    private var isClickAllowed = true
-
-    private val handler = Handler(Looper.getMainLooper())
+    private val searchDebounce by lazy { debounce(SEARCH_DEBOUNCE_DELAY, viewLifecycleOwner.lifecycleScope, true, searchViewModel::onSearchChanged) }
 
     private val simpleTextWatcher = object: TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -72,25 +66,8 @@ class SearchFragment: androidx.fragment.app.Fragment() {
         }
     }
 
-    private fun clickDebounce(): Boolean {
-        val current = isClickAllowed
-        if (isClickAllowed) {
-            isClickAllowed = false
-            handler.postDelayed({ isClickAllowed = true }, CLICK_DEBOUNCE_DELAY)
-        }
-        return current
-    }
-
-    private val searchRunnable = Runnable { sendRequestToServer() }
-
-    private fun searchDebounce() {
-        handler.removeCallbacks(searchRunnable)
-        handler.postDelayed(searchRunnable, SEARCH_DEBOUNCE_DELAY)
-    }
-
     private fun sendRequestToServer() {
-        searchViewModel.showProgressBar()
-        searchViewModel.onSearchChanged(searchTextField.text.toString())
+        searchDebounce(searchTextField.text.toString())
     }
 
     private var _binding: FragmentSearchBinding? = null
@@ -119,7 +96,7 @@ class SearchFragment: androidx.fragment.app.Fragment() {
                 historyViewGroup.visibility =
                     if (searchTextField.hasFocus() && p0?.isEmpty() == true) View.VISIBLE else View.GONE
                 if (searchTextField.text.isNotBlank()) {
-                    searchDebounce()
+                    searchDebounce(searchTextField.text.toString())
                 }
             }
 
@@ -149,16 +126,22 @@ class SearchFragment: androidx.fragment.app.Fragment() {
             sendRequestToServer()
         }
 
-        searchViewModel.observe().observe(viewLifecycleOwner) {
-            historyViewGroup.visibleOrGone(it.searchHistoryTrackList.isNotEmpty() && it.placeHolderState == PlaceHolderState.HISTORY)
 
-            updateStateHolderVisible(it.placeHolderState)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
 
-            historyAdapter.tracks = it.searchHistoryTrackList
-            historyAdapter.notifyDataSetChanged()
+                searchViewModel.observe().collect {
+                    historyViewGroup.visibleOrGone(it.searchHistoryTrackList.isNotEmpty() && it.placeHolderState == PlaceHolderState.HISTORY)
 
-            searchAdapter.tracks = it.trackList
-            searchAdapter.notifyDataSetChanged()
+                    updateStateHolderVisible(it.placeHolderState)
+
+                    historyAdapter.tracks = it.searchHistoryTrackList
+                    historyAdapter.notifyDataSetChanged()
+
+                    searchAdapter.tracks = it.trackList
+                    searchAdapter.notifyDataSetChanged()
+                }
+            }
         }
 
     }
@@ -206,12 +189,12 @@ class SearchFragment: androidx.fragment.app.Fragment() {
     }
 
     private fun onClick(track: Track) {
-        if (clickDebounce()) {
+        debounce<Unit>(CLICK_DEBOUNCE_DELAY, viewLifecycleOwner.lifecycleScope, false) {
             searchViewModel.writeHistory(track)
             val intent = Intent(requireContext(), AudioPlayerActivity::class.java)
             intent.putExtra(PARCEL_TRACK_KEY, track)
             startActivity(intent)
-        }
+        }.invoke(Unit)
     }
 
     companion object {

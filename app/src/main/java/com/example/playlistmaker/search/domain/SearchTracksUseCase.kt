@@ -4,6 +4,6 @@ import com.example.playlistmaker.search.domain.models.Track
 
 interface SearchTracksUseCase {
 
-    operator fun invoke(query: String, onError: () -> Unit, onSuccess: (List<Track>) -> Unit)
+    suspend operator fun invoke(query: String, onError: () -> Unit, onSuccess: (List<Track>) -> Unit)
 
 }

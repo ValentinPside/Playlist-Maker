@@ -5,9 +5,9 @@ import com.example.playlistmaker.search.data.remote.SearchHistoryRemoteDataSourc
 import com.example.playlistmaker.search.domain.models.Track
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 
 interface SearchTracksRepository {
 
@@ -17,7 +17,7 @@ interface SearchTracksRepository {
 
     fun clear()
 
-    fun search(query: String, onSuccess: (List<Track>) -> Unit, onError: () -> Unit)
+    suspend fun search(query: String, onSuccess: (List<Track>) -> Unit, onError: () -> Unit)
 
 }
 
@@ -59,26 +59,11 @@ class SearchTracksRepositoryImpl(
         sharedPreferences.edit().clear().apply()
     }
 
-    override fun search(query: String, onSuccess: (List<Track>) -> Unit, onError: () -> Unit) {
-        val result = remoteDataStore.search(query)
-
-        val callback = object: Callback<SearchResponse> {
-            override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
-                if (response.code() == 200) {
-                    val tracks = response.body()?.results
-                    tracks?.let(onSuccess) ?: onError.invoke()
-                } else {
-                    onError.invoke()
-                }
-            }
-
-            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
-                onError.invoke()
-            }
-
-        }
-
-        result.enqueue(callback)
+    override suspend fun search(query: String, onSuccess: (List<Track>) -> Unit, onError: () -> Unit) {
+        remoteDataStore.search(query)
+            .flowOn(Dispatchers.IO)
+            .catch { onError.invoke() }
+            .collect { onSuccess(it.results) }
     }
 
 
