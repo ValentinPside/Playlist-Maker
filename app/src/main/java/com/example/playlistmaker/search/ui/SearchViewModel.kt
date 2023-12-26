@@ -25,14 +25,14 @@ class SearchViewModel (
     fun observe() = viewState.asStateFlow()
 
     init {
-        getSearchHistoryTrackList()
+        viewModelScope.launch { getSearchHistoryTrackList() }
     }
 
-    fun showProgressBar(){
+    private fun showProgressBar(){
         viewState.update { it.copy(placeHolderState = PlaceHolderState.LOADING) }
     }
 
-    fun showCommunicationProblemPlaceholder(){
+    private fun showCommunicationProblemPlaceholder(){
         viewState.update { it.copy(placeHolderState = PlaceHolderState.PROBLEM) }
     }
 
@@ -46,16 +46,16 @@ class SearchViewModel (
         }
     }
 
-    fun getSearchHistoryTrackList(){
+    suspend fun getSearchHistoryTrackList(){
         viewState.update { it.copy(searchHistoryTrackList = getTracksHistoryUseCase.get(), placeHolderState = PlaceHolderState.HISTORY) }
     }
 
-    fun clearHistory() {
+    suspend fun clearHistory() {
         clearTracksHistoryUseCase()
         getSearchHistoryTrackList()
     }
 
-    fun writeHistory(track: Track) {
+    suspend fun writeHistory(track: Track) {
         val trackList = viewState.value.searchHistoryTrackList
         writeTracksHistoryUseCase.write(trackList, track)
         getSearchHistoryTrackList()

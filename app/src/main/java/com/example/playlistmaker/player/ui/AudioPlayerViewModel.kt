@@ -3,6 +3,8 @@ package com.example.playlistmaker.player.ui
 import android.media.MediaPlayer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.playlistmaker.db.domain.FavoritesRepository
+import com.example.playlistmaker.mapTheme.domain.MapThemeRepository
 import com.example.playlistmaker.search.domain.models.Track
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -14,7 +16,8 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class AudioPlayerViewModel(
-    private val track: Track
+    private val track: Track,
+    private val favoritesRepository: FavoritesRepository
 ) : ViewModel() {
 
     private val viewState = MutableStateFlow(ViewState(track))
@@ -25,6 +28,11 @@ class AudioPlayerViewModel(
 
     init {
         initMediaPlayer()
+        viewModelScope.launch {
+            favoritesRepository.isExist(track.trackId).collect {isFavorite ->
+                viewState.update { it.copy(isFavorite = isFavorite) }
+            }
+        }
     }
 
     override fun onCleared() {
@@ -94,9 +102,22 @@ class AudioPlayerViewModel(
         return SimpleDateFormat("mm:ss", Locale.getDefault()).format(mediaPlayer.currentPosition) ?: "00:00"
     }
 
-    data class ViewState(
-        val track: Track,
-        val playerState: PlayerState = PlayerState.Default()
-    )
+    fun onFavoriteClick() {
+        viewModelScope.launch {
+            if (!viewState.value.isFavorite){
+                favoritesRepository.addToFavorites(track)
+            } else {
+                favoritesRepository.deleteFromFavorites(track)
+            }
+        }
+    }
+
 }
+
+data class ViewState(
+    val track: Track,
+    val playerState: PlayerState = PlayerState.Default(),
+    val isFavorite: Boolean = false
+)
+
 

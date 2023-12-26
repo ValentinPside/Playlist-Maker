@@ -1,6 +1,8 @@
 package com.example.playlistmaker.search.data
 
 import android.content.SharedPreferences
+import android.util.Log
+import com.example.playlistmaker.db.data.AppDatabase
 import com.example.playlistmaker.search.data.remote.SearchHistoryRemoteDataSource
 import com.example.playlistmaker.search.domain.models.Track
 import com.google.gson.Gson
@@ -22,6 +24,7 @@ interface SearchTracksRepository {
 }
 
 class SearchTracksRepositoryImpl(
+    private val appDatabase: AppDatabase,
     private val sharedPreferences: SharedPreferences,
     private val remoteDataStore: SearchHistoryRemoteDataSource
 ): SearchTracksRepository {
@@ -62,7 +65,10 @@ class SearchTracksRepositoryImpl(
     override suspend fun search(query: String, onSuccess: (List<Track>) -> Unit, onError: () -> Unit) {
         remoteDataStore.search(query)
             .flowOn(Dispatchers.IO)
-            .catch { onError.invoke() }
+            .catch {
+                Log.d("TAG", "$it")
+                onError.invoke()
+            }
             .collect { onSuccess(it.results) }
     }
 

@@ -1,17 +1,20 @@
-package com.example.playlistmaker.sharing.ui
+package com.example.playlistmaker.mediateca.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.FragmentMediatecaBinding
-import com.example.playlistmaker.sharing.data.MediatecaViewPagerAdapter
+import com.example.playlistmaker.mediateca.data.MediatecaViewPagerAdapter
+import com.example.playlistmaker.mediateca.ui.tracks.TracksViewModel
 import com.google.android.material.tabs.TabLayoutMediator
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MediatecaFragment : Fragment() {
+
+    private val tracksViewModel: TracksViewModel by viewModel()
 
     private lateinit var tabMediator: TabLayoutMediator
 
@@ -30,7 +33,6 @@ class MediatecaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.viewPager.adapter = MediatecaViewPagerAdapter(childFragmentManager, lifecycle)
 
         tabMediator = TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->

@@ -61,10 +61,6 @@
         <item name="itemTextColor">@drawable/bottom_navigation_tab_bar_dark</item>
     </style>
 
-    <style name="AudioPlayerRightButton">
-        <item name="android:src">@drawable/player_like_button</item>
-    </style>
-
     <style name="AudioPlayerLeftButton">
         <item name="android:src">@drawable/player_add_button</item>
     </style>

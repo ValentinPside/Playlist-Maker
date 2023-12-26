@@ -206,7 +206,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/audioPlayerAddTrack"
         app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
         app:layout_constraintTop_toTopOf="@+id/audioPlayerAddTrack"
-        style="@style/AudioPlayerRightButton"/>
+        tools:src="@drawable/add_to_favorites"/>
 
     <TextView
         android:id="@+id/actualTrackTime"

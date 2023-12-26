@@ -6,13 +6,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.playlistmaker.extension.DateUtils
 import com.example.playlistmaker.R
+import com.example.playlistmaker.databinding.ActivityAudioPlayerBinding
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.search.ui.PARCEL_TRACK_KEY
 import kotlinx.coroutines.launch
@@ -33,10 +36,11 @@ class AudioPlayerActivity: AppCompatActivity() {
     private lateinit var btPlay: ImageView
     private lateinit var btPause: ImageView
     private lateinit var url: String
+    private lateinit var favoriteButton:ImageView
+    private val binding by viewBinding(ActivityAudioPlayerBinding::bind)
 
     val track by lazy { requireNotNull(intent.extras?.getParcelable<Track>(PARCEL_TRACK_KEY)) }
     private val viewModel: AudioPlayerViewModel by viewModel { parametersOf(track) }
-
     private fun pausePlayer() {
         viewModel.onPause()
     }
@@ -53,12 +57,14 @@ class AudioPlayerActivity: AppCompatActivity() {
             viewModel.onPlayButtonClicked()
         }
 
+        binding.audioPlayerLikeTrack.setOnClickListener { viewModel.onFavoriteClick() }
+
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.observe().collect {
-                    updateInfo(it.track)
+                viewModel.observe().collect {state ->
+                    updateInfo(state.track)
 
-                    if (it.playerState.buttonText == "PAUSE") {
+                    if (state.playerState.buttonText == "PAUSE") {
                         btPlay.visibility = View.GONE
                         btPause.visibility = View.VISIBLE
                     } else {
@@ -66,11 +72,24 @@ class AudioPlayerActivity: AppCompatActivity() {
                         btPause.visibility = View.GONE
                     }
 
-                    btPlay.isEnabled = it.playerState.isPlayButtonEnabled
-                    bigTrackTime.text = it.playerState.progress
+                    btPlay.isEnabled = state.playerState.isPlayButtonEnabled
+                    bigTrackTime.text = state.playerState.progress
+
+                    updateLikeIcon(state.isFavorite)
                 }
             }
         }
+
+    }
+
+    private fun updateLikeIcon(isFavorite: Boolean) {
+        val likeIcon = if (isFavorite) {
+            R.drawable.remove_from_favorites
+        } else {
+            R.drawable.add_to_favorites
+        }
+
+        binding.audioPlayerLikeTrack.setImageDrawable(ContextCompat.getDrawable(this, likeIcon))
 
     }
 
@@ -86,6 +105,8 @@ class AudioPlayerActivity: AppCompatActivity() {
         lilCountry = findViewById(R.id.trackCountryRight)
         btPlay = findViewById(R.id.audioPlayerPlayBut)
         btPause = findViewById(R.id.audioPlayerPauseBut)
+        favoriteButton = findViewById(R.id.audioPlayerLikeTrack)
+
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setNavigationOnClickListener { onBackPressed() }

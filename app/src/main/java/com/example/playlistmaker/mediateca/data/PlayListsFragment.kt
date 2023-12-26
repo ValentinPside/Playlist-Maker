@@ -1,4 +1,4 @@
-package com.example.playlistmaker.sharing.data
+package com.example.playlistmaker.mediateca.data
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.playlistmaker.databinding.MediatecaPlaylistsBinding
-import com.example.playlistmaker.sharing.ui.PlayListFragmentViewModel
+import com.example.playlistmaker.mediateca.ui.PlayListFragmentViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
