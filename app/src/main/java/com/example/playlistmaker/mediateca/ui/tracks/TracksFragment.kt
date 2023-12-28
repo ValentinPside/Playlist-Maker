@@ -3,6 +3,7 @@ package com.example.playlistmaker.mediateca.ui.tracks
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -12,8 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.MediatecaTracksBinding
-import com.example.playlistmaker.extension.visibleOrGone
-import com.example.playlistmaker.extension.visibleOrInvisible
 import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.search.ui.PARCEL_TRACK_KEY
@@ -42,8 +41,11 @@ class TracksFragment : Fragment(R.layout.mediateca_tracks) {
                     adapter.tracks = state.items
                     adapter.notifyDataSetChanged()
 
-                    binding.mediatecaGroup.visibleOrInvisible(state.items.isEmpty())
-                    binding.favoritesTracksRv.visibleOrGone(state.items.isNotEmpty())
+                    if(state.items.isEmpty()){
+                        binding.mediatecaGroup.visibility = View.VISIBLE
+                        binding.favoritesTracksRv.visibility = View.INVISIBLE
+                    } else{ binding.favoritesTracksRv.visibility = View.VISIBLE
+                        binding.mediatecaGroup.visibility = View.INVISIBLE}
                 }
             }
         }
