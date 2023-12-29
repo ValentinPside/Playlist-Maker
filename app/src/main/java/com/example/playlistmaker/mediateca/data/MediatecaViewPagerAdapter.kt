@@ -1,9 +1,10 @@
-package com.example.playlistmaker.sharing.data
+package com.example.playlistmaker.mediateca.data
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.playlistmaker.mediateca.ui.tracks.TracksFragment
 
 class MediatecaViewPagerAdapter (fragmentManager: FragmentManager, lifecycle: Lifecycle)
     : FragmentStateAdapter(fragmentManager, lifecycle) {

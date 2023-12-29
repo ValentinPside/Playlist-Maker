@@ -164,10 +164,6 @@
         <item name="itemTextColor">@drawable/bottom_navigation_tab_bar</item>
     </style>
 
-    <style name="AudioPlayerRightButton">
-        <item name="android:src">@drawable/audioplayerliketrack</item>
-    </style>
-
     <style name="AudioPlayerLeftButton">
         <item name="android:src">@drawable/audioplayeraddtrack</item>
     </style>

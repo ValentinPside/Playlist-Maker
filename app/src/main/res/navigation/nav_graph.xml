@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/playListsFragment"
-        android:name="com.example.playlistmaker.sharing.ui.MediatecaFragment"
+        android:name="com.example.playlistmaker.mediateca.ui.MediatecaFragment"
         android:label="PlayListsFragment"
         tools:layout="@layout/fragment_mediateca" />
     <fragment

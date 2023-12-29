@@ -4,6 +4,6 @@ import com.example.playlistmaker.search.domain.models.Track
 
 interface GetTracksHistoryUseCase {
 
-    fun get(): List<Track>
+    suspend fun get(): List<Track>
 
 }

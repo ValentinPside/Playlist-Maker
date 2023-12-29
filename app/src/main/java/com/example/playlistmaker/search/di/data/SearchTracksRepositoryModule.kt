@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val searchTracksRepositoryModule = module {
 
     single<SearchTracksRepository> {
-        SearchTracksRepositoryImpl(provideSharedPref(androidApplication()), get())
+        SearchTracksRepositoryImpl(get(), provideSharedPref(androidApplication()), get())
     }
 
     single<SearchHistoryRemoteDataSource> {

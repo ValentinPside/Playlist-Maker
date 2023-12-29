@@ -114,11 +114,11 @@ class SearchFragment: androidx.fragment.app.Fragment() {
             val view: View? = this.requireView().findFocus()
             inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
 
-            searchViewModel.getSearchHistoryTrackList()
+            lifecycleScope.launch { searchViewModel.getSearchHistoryTrackList() }
         }
 
         clearHistoryButton.setOnClickListener {
-            searchViewModel.clearHistory()
+            lifecycleScope.launch { searchViewModel.clearHistory() }
             historyAdapter.tracks = emptyList()
         }
 
@@ -185,12 +185,12 @@ class SearchFragment: androidx.fragment.app.Fragment() {
     private fun initSearchHistoryTrackList() {
         historyAdapter = SearchAdapter(arrayListOf()) { onClick(it) }
         historyRecyclerView.adapter = historyAdapter
-        searchViewModel.getSearchHistoryTrackList()
+        lifecycleScope.launch { searchViewModel.getSearchHistoryTrackList() }
     }
 
     private fun onClick(track: Track) {
         debounce<Unit>(CLICK_DEBOUNCE_DELAY, viewLifecycleOwner.lifecycleScope, false) {
-            searchViewModel.writeHistory(track)
+            lifecycleScope.launch { searchViewModel.writeHistory(track) }
             val intent = Intent(requireContext(), AudioPlayerActivity::class.java)
             intent.putExtra(PARCEL_TRACK_KEY, track)
             startActivity(intent)
