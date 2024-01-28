@@ -14,10 +14,19 @@
         android:id="@+id/playListsFragment"
         android:name="com.example.playlistmaker.mediateca.ui.MediatecaFragment"
         android:label="PlayListsFragment"
-        tools:layout="@layout/fragment_mediateca" />
+        tools:layout="@layout/fragment_mediateca" >
+        <action
+            android:id="@+id/action_playListsFragment_to_newPlaylistFragment"
+            app:destination="@id/newPlaylistFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.playlistmaker.settings.ui.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/newPlaylistFragment"
+        android:name="com.example.playlistmaker.mediateca.ui.new_playlist.NewPlaylistFragment"
+        android:label="fragment_new_playlist"
+        tools:layout="@layout/fragment_new_playlist" />
 </navigation>

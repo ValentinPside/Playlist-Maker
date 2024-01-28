@@ -1,23 +1,33 @@
 package com.example.playlistmaker.player.ui
 
+import android.content.Context
 import android.media.MediaPlayer
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.playlistmaker.R
+import com.example.playlistmaker.data.TrackToPlayListMediator
 import com.example.playlistmaker.db.domain.FavoritesRepository
-import com.example.playlistmaker.mapTheme.domain.MapThemeRepository
+import com.example.playlistmaker.db.domain.PlayListRepository
+import com.example.playlistmaker.domain.PlayList
 import com.example.playlistmaker.search.domain.models.Track
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class AudioPlayerViewModel(
+    private val context: Context,
     private val track: Track,
-    private val favoritesRepository: FavoritesRepository
+    private val favoritesRepository: FavoritesRepository,
+    private val playListRepository: PlayListRepository,
+    private val trackToPlayListMediator: TrackToPlayListMediator
 ) : ViewModel() {
 
     private val viewState = MutableStateFlow(ViewState(track))
@@ -31,6 +41,12 @@ class AudioPlayerViewModel(
         viewModelScope.launch {
             favoritesRepository.isExist(track.trackId).collect {isFavorite ->
                 viewState.update { it.copy(isFavorite = isFavorite) }
+            }
+        }
+
+        viewModelScope.launch {
+            playListRepository.observePlayListWithTracks().collect{ items ->
+                viewState.update { it.copy(playLists = items) }
             }
         }
     }
@@ -112,12 +128,40 @@ class AudioPlayerViewModel(
         }
     }
 
+    fun addTrackToPlayList(playListId: Int) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val trackAdded = playListRepository.isTrackAdded(track.trackId, playListId)
+                val playList = playListRepository.getPlayListById(playListId)
+
+                if (!trackAdded) {
+                    playListRepository.addTrackToPlaylist(track.trackId, playListId)
+                    val text = ContextCompat.getString(context, R.string.track_is_added_to_playlist).format(playList.name)
+                    viewState.update { it.copy(error = text) }
+                } else {
+                    val text = ContextCompat.getString(context, R.string.track_is_added).format(playList.name)
+                    viewState.update { it.copy(error = text) }
+                }
+            }
+        }
+    }
+
+    fun clearError() {
+        viewState.update { it.copy(error = null) }
+    }
+
+    fun createNewPlayList() {
+        trackToPlayListMediator.addTrack(track.trackId)
+    }
+
 }
 
 data class ViewState(
     val track: Track,
     val playerState: PlayerState = PlayerState.Default(),
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean = false,
+    val playLists: List<PlayList> = emptyList(),
+    val error: String? = null
 )
 
 

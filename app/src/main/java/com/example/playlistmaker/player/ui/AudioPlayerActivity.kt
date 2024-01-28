@@ -1,23 +1,27 @@
 package com.example.playlistmaker.player.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.playlistmaker.extension.DateUtils
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.ActivityAudioPlayerBinding
+import com.example.playlistmaker.extension.DateUtils
+import com.example.playlistmaker.extension.visibleOrInvisible
 import com.example.playlistmaker.search.domain.models.Track
 import com.example.playlistmaker.search.ui.PARCEL_TRACK_KEY
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -37,7 +41,9 @@ class AudioPlayerActivity: AppCompatActivity() {
     private lateinit var btPause: ImageView
     private lateinit var url: String
     private lateinit var favoriteButton:ImageView
+    private lateinit var audioPlayerAddTrack:ImageView
     private val binding by viewBinding(ActivityAudioPlayerBinding::bind)
+    private lateinit var playListAdapter: PlayListPreviewAdapter
 
     val track by lazy { requireNotNull(intent.extras?.getParcelable<Track>(PARCEL_TRACK_KEY)) }
     private val viewModel: AudioPlayerViewModel by viewModel { parametersOf(track) }
@@ -49,7 +55,7 @@ class AudioPlayerActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio_player)
         initViews()
-
+        setupPlayLists()
         btPlay.setOnClickListener {
             viewModel.onPlayButtonClicked()
         }
@@ -76,10 +82,38 @@ class AudioPlayerActivity: AppCompatActivity() {
                     bigTrackTime.text = state.playerState.progress
 
                     updateLikeIcon(state.isFavorite)
+                    playListAdapter.submitList(state.playLists)
+
+                    state.error?.let {
+                        Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                        viewModel.clearError()
+                    }
                 }
             }
         }
 
+        val container = binding.standardBottomSheet
+        val behavior = BottomSheetBehavior.from(container).apply {
+            state = BottomSheetBehavior.STATE_HIDDEN
+        }
+        binding.audioPlayerAddTrack.setOnClickListener {
+            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+
+        behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(p0: View, newState: Int) {
+                binding.overlay.visibleOrInvisible(newState == BottomSheetBehavior.STATE_COLLAPSED)
+            }
+            override fun onSlide(p0: View, p1: Float) {}
+        })
+    }
+
+    private fun setupPlayLists() {
+        playListAdapter = PlayListPreviewAdapter() {
+            viewModel.addTrackToPlayList(it)
+        }
+        binding.playListRecyclerView.adapter = playListAdapter
+        binding.playListRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun updateLikeIcon(isFavorite: Boolean) {
@@ -94,19 +128,23 @@ class AudioPlayerActivity: AppCompatActivity() {
     }
 
     private fun initViews() {
-        albumCover = findViewById(R.id.audioplayer_album_cover)
-        bigTrackName = findViewById(R.id.audioplayer_track_name)
-        bigBandName = findViewById(R.id.audioplayer_band_name)
-        bigTrackTime = findViewById(R.id.actualTrackTime)
-        lilTrackTime = findViewById(R.id.track_timeRight)
-        lilAlbumName = findViewById(R.id.collectionNameRight)
-        lilReleaseDate = findViewById(R.id.releaseDateRight)
-        lilPrimaryGenreName = findViewById(R.id.primaryGenreNameRight)
-        lilCountry = findViewById(R.id.trackCountryRight)
-        btPlay = findViewById(R.id.audioPlayerPlayBut)
-        btPause = findViewById(R.id.audioPlayerPauseBut)
-        favoriteButton = findViewById(R.id.audioPlayerLikeTrack)
-
+        albumCover = binding.audioplayerAlbumCover
+        bigTrackName = binding.audioplayerTrackName
+        bigBandName = binding.audioplayerBandName
+        bigTrackTime = binding.actualTrackTime
+        lilTrackTime = binding.trackTimeRight
+        lilAlbumName = binding.collectionNameRight
+        lilReleaseDate = binding.releaseDateRight
+        lilPrimaryGenreName = binding.primaryGenreNameRight
+        lilCountry = binding.trackCountryRight
+        btPlay = binding.audioPlayerPlayBut
+        btPause = binding.audioPlayerPauseBut
+        favoriteButton = binding.audioPlayerLikeTrack
+        audioPlayerAddTrack = binding.audioPlayerAddTrack
+        binding.newPlaylist.setOnClickListener {
+            viewModel.createNewPlayList()
+            finish()
+        }
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setNavigationOnClickListener { onBackPressed() }

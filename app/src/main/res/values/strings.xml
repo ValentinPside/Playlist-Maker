@@ -24,5 +24,16 @@
     <string name="mediateca_first_fragment_name">Избранные треки</string>
     <string name="mediateca_second_fragment_name">Плейлисты</string>
     <string name="zero_time">00:00</string>
+    <string name="new_playlist">Новый плейлист</string>
+    <string name="new_playlist_nate_hint_text">Название*</string>
+    <string name="new_playlist_description_hint_text">Описание</string>
+    <string name="create">Создать</string>
+    <string name="close_play_list_title">Завершить создание плейлиста?</string>
+    <string name="close_play_list_dialog_message">Все несохраненные данные будут потеряны</string>
+    <string name="positive_button">Завершить</string>
+    <string name="negative_button">Отмена</string>
+    <string name="add_to_playlist">Добавить в плейлист</string>
+    <string name="track_is_added_to_playlist">"Добавлено в плейлист %s"</string>
+    <string name="track_is_added">"Трек уже добавлен в плейлист %s"</string>
 
 </resources>
