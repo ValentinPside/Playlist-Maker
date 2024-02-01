@@ -1,7 +1,6 @@
 package com.example.playlistmaker.search.ui
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,18 +8,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import androidx.constraintlayout.widget.Group
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.FragmentSearchBinding
 import com.example.playlistmaker.extension.visibleOrGone
 import com.example.playlistmaker.search.domain.models.Track
-import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.ui.adapters.SearchAdapter
 import debounce
 import kotlinx.coroutines.launch
@@ -191,9 +195,8 @@ class SearchFragment: androidx.fragment.app.Fragment() {
     private fun onClick(track: Track) {
         debounce<Unit>(CLICK_DEBOUNCE_DELAY, viewLifecycleOwner.lifecycleScope, false) {
             lifecycleScope.launch { searchViewModel.writeHistory(track) }
-            val intent = Intent(requireContext(), AudioPlayerActivity::class.java)
-            intent.putExtra(PARCEL_TRACK_KEY, track)
-            startActivity(intent)
+            val args = bundleOf(PARCEL_TRACK_KEY to track)
+            findNavController().navigate(R.id.action_searchFragment_to_audioPlayerFragment, args)
         }.invoke(Unit)
     }
 

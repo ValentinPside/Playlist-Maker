@@ -1,21 +1,19 @@
 package com.example.playlistmaker.mediateca.ui.tracks
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.MediatecaTracksBinding
-import com.example.playlistmaker.player.ui.AudioPlayerActivity
 import com.example.playlistmaker.search.domain.models.Track
-import com.example.playlistmaker.search.ui.PARCEL_TRACK_KEY
 import com.example.playlistmaker.search.ui.adapters.SearchAdapter
 import debounce
 import kotlinx.coroutines.launch
@@ -60,9 +58,11 @@ class TracksFragment : Fragment(R.layout.mediateca_tracks) {
 
     private fun onClickTrack(track: Track) {
         debounce<Unit>(CLICK_DEBOUNCE_DELAY, viewLifecycleOwner.lifecycleScope, false) {
-            val intent = Intent(requireContext(), AudioPlayerActivity::class.java)
-            intent.putExtra(PARCEL_TRACK_KEY, track)
-            startActivity(intent)
+//            val intent = Intent(requireContext(), AudioPlayerFragment::class.java)
+//            intent.putExtra(PARCEL_TRACK_KEY, track)
+//            startActivity(intent)
+            val args = bundleOf("parcel_track_key" to track)
+            findNavController().navigate(R.id.action_playListsFragment_to_audioPlayerFragment, args)
         }.invoke(Unit)
     }
 

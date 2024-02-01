@@ -83,4 +83,21 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="SettingsLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <style name="SwitchStyle" parent="Theme.PlaylistMaker">
+        <item name="android:thumbTint">@color/YP_Blue</item>
+        <item name="android:trackTint">@color/YP_Blue</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+
 </resources>

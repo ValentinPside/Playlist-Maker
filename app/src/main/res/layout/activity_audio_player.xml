@@ -119,8 +119,8 @@
     <ImageView
         android:id="@+id/audioPlayerPlayBut"
         style="@style/AudioPlayerPlayBut"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/actualTrackTime"
         app:layout_constraintEnd_toStartOf="@+id/butt_right_guideline"
@@ -130,8 +130,8 @@
     <ImageView
         android:id="@+id/audioPlayerPauseBut"
         style="@style/AudioPlayerPauseBut"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/actualTrackTime"
         app:layout_constraintEnd_toStartOf="@+id/butt_right_guideline"
@@ -298,8 +298,8 @@
     <ImageView
         android:id="@+id/audioPlayerAddTrack"
         style="@style/AudioPlayerLeftButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/actualTrackTime"
@@ -309,8 +309,8 @@
 
     <ImageView
         android:id="@+id/audioPlayerLikeTrack"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/actualTrackTime"
@@ -322,20 +322,17 @@
     <TextView
         android:id="@+id/actualTrackTime"
         style="@style/YPTextBW"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
         android:layout_marginBottom="5sp"
-        android:autoSizeMaxTextSize="100sp"
-        android:autoSizeMinTextSize="14sp"
-        android:autoSizeStepGranularity="2sp"
         android:gravity="center"
-        android:text="TextView"
+        android:textSize="14sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/text_horizontal_guideline"
-        app:layout_constraintEnd_toEndOf="@+id/audioplayer_album_cover"
-        app:layout_constraintStart_toStartOf="@+id/audioplayer_album_cover"
-        app:layout_constraintTop_toTopOf="@+id/time_horizontal_guideline" />
+        app:layout_constraintStart_toStartOf="@+id/audioPlayerPlayBut"
+        app:layout_constraintTop_toBottomOf="@id/audioPlayerPlayBut"
+        app:layout_constraintEnd_toEndOf="@id/audioPlayerPlayBut"
+        tools:text="00:00" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -354,7 +351,8 @@
         app:behavior_hideable="true"
         app:behavior_peekHeight="240dp"
         style="@style/bottomSheetStyle"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:visibility="gone">
 
         <View
             android:layout_width="40dp"

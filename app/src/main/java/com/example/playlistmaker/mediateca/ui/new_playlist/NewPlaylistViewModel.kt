@@ -4,16 +4,18 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.playlistmaker.data.TrackToPlayListMediator
-import com.example.playlistmaker.db.domain.PlayListRepository
 import com.example.playlistmaker.domain.PlayList
+import com.example.playlistmaker.domain.playlist.AddTrackToPlayListUseCase
+import com.example.playlistmaker.domain.playlist.CreatePlayListUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class NewPlaylistViewModel(
-    private val repository: PlayListRepository,
-    private val trackToPlayListMediator: TrackToPlayListMediator
+    private val trackToPlayListMediator: TrackToPlayListMediator,
+    private val addTrackToPlayListUseCase: AddTrackToPlayListUseCase,
+    private val createPlayListUseCase: CreatePlayListUseCase
 ) : ViewModel() {
     private val state = MutableStateFlow(ViewState())
     fun observeUi() = state.asStateFlow()
@@ -38,9 +40,10 @@ class NewPlaylistViewModel(
                 description = state.value.description,
                 uri = state.value.image
             )
-            val result = repository.insert(playList)
+            val result = createPlayListUseCase(playList)
+
             trackToPlayListMediator.observe().value?.let {
-                repository.addTrackToPlaylist(it, result.toInt())
+                addTrackToPlayListUseCase(trackId = it, playListId = result.toInt())
                 trackToPlayListMediator.addTrack(null)
             }
             state.update { it.copy(finish = true) }

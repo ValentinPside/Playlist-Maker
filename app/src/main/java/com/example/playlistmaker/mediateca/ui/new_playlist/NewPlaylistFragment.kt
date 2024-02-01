@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -46,13 +47,21 @@ class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
         AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.close_play_list_title))
             .setMessage(getString(R.string.close_play_list_dialog_message))
-            .setPositiveButton(getString(R.string.positive_button)) {_, _ -> onBackPressed() }
+            .setPositiveButton(getString(R.string.positive_button)) {_, _ -> finish() }
             .setNegativeButton(getString(R.string.negative_button)) { dialog, _ -> dialog.dismiss() }
             .create()
     }
 
     private fun onBackPressed() {
-        viewModel.onBack()
+        val state = viewModel.observeUi().value
+        if (state.createEnabled || state.image != null || state.description?.isNotEmpty() == true) {
+            dialog.show()
+        } else {
+            finish()
+        }
+    }
+
+    private fun finish() {
         findNavController().popBackStack()
     }
 
@@ -69,10 +78,19 @@ class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
             if (state.createEnabled || state.image != null || state.description?.isNotEmpty() == true) {
                 dialog.show()
             } else {
-                onBackPressed()
+                finish()
             }
         }
         binding.createBut.setOnClickListener { viewModel.create() }
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressed()
+                }
+            }
+        )
     }
 
     private fun observeUi() {
@@ -83,7 +101,7 @@ class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
                     updateImage(state.image)
 
                     if (state.finish) {
-                        onBackPressed()
+                        finish()
                     }
                 }
             }

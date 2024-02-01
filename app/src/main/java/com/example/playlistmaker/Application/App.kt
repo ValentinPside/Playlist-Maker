@@ -8,7 +8,7 @@ import com.example.playlistmaker.player.di.playerViewModelModule
 import com.example.playlistmaker.search.di.data.searchTracksRepositoryModule
 import com.example.playlistmaker.search.di.searchViewModelModule
 import com.example.playlistmaker.settings.di.settingsViewModelModule
-import com.example.playlistmaker.mediateca.di.playListFragmentViewModelModule
+import com.example.playlistmaker.mediateca.di.playListViewModelModule
 import com.example.playlistmaker.mediateca.di.tracksViewModelModule
 import com.markodevcic.peko.PermissionRequester
 import org.koin.android.ext.koin.androidContext
@@ -22,7 +22,7 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             modules(settingsViewModelModule, playerViewModelModule, searchTracksRepositoryModule,
-                searchViewModelModule, tracksViewModelModule, playListFragmentViewModelModule,
+                searchViewModelModule, tracksViewModelModule, playListViewModelModule,
             dataModule, newPlayListFragmentViewModelModule
             )
         }

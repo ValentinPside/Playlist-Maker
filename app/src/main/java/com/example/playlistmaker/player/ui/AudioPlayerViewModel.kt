@@ -7,27 +7,31 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.playlistmaker.R
 import com.example.playlistmaker.data.TrackToPlayListMediator
-import com.example.playlistmaker.db.domain.FavoritesRepository
-import com.example.playlistmaker.db.domain.PlayListRepository
 import com.example.playlistmaker.domain.PlayList
+import com.example.playlistmaker.domain.favorites.AddTrackToFavoritesUseCase
+import com.example.playlistmaker.domain.favorites.IsTrackAddedToFavoriteListUseCase
+import com.example.playlistmaker.domain.favorites.RemoveTrackFromFavoritesUseCase
+import com.example.playlistmaker.domain.playlist.AddTrackToPlayListUseCase
+import com.example.playlistmaker.domain.playlist.ObservePlayListsUseCase
 import com.example.playlistmaker.search.domain.models.Track
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class AudioPlayerViewModel(
     private val context: Context,
     private val track: Track,
-    private val favoritesRepository: FavoritesRepository,
-    private val playListRepository: PlayListRepository,
-    private val trackToPlayListMediator: TrackToPlayListMediator
+    private val trackToPlayListMediator: TrackToPlayListMediator,
+    private val isTrackAddedToFavoriteListUseCase: IsTrackAddedToFavoriteListUseCase,
+    private val addTrackToFavoritesUseCase: AddTrackToFavoritesUseCase,
+    private val removeTrackFromFavoritesUseCase: RemoveTrackFromFavoritesUseCase,
+    private val observePlayListsUseCase: ObservePlayListsUseCase,
+    private val addTrackToPlayListUseCase: AddTrackToPlayListUseCase
 ) : ViewModel() {
 
     private val viewState = MutableStateFlow(ViewState(track))
@@ -39,13 +43,13 @@ class AudioPlayerViewModel(
     init {
         initMediaPlayer()
         viewModelScope.launch {
-            favoritesRepository.isExist(track.trackId).collect {isFavorite ->
+            isTrackAddedToFavoriteListUseCase(track.trackId).collect {isFavorite ->
                 viewState.update { it.copy(isFavorite = isFavorite) }
             }
         }
 
         viewModelScope.launch {
-            playListRepository.observePlayListWithTracks().collect{ items ->
+            observePlayListsUseCase().collect{ items ->
                 viewState.update { it.copy(playLists = items) }
             }
         }
@@ -121,28 +125,24 @@ class AudioPlayerViewModel(
     fun onFavoriteClick() {
         viewModelScope.launch {
             if (!viewState.value.isFavorite){
-                favoritesRepository.addToFavorites(track)
+                addTrackToFavoritesUseCase(track)
             } else {
-                favoritesRepository.deleteFromFavorites(track)
+                removeTrackFromFavoritesUseCase(track)
             }
         }
     }
 
-    fun addTrackToPlayList(playListId: Int) {
+    fun addTrackToPlayList(playList: PlayList) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val trackAdded = playListRepository.isTrackAdded(track.trackId, playListId)
-                val playList = playListRepository.getPlayListById(playListId)
-
-                if (!trackAdded) {
-                    playListRepository.addTrackToPlaylist(track.trackId, playListId)
-                    val text = ContextCompat.getString(context, R.string.track_is_added_to_playlist).format(playList.name)
-                    viewState.update { it.copy(error = text) }
-                } else {
-                    val text = ContextCompat.getString(context, R.string.track_is_added).format(playList.name)
-                    viewState.update { it.copy(error = text) }
-                }
+            val result = addTrackToPlayListUseCase(track.trackId, playList.id)
+            if (result) {
+                val text = ContextCompat.getString(context, R.string.track_is_added_to_playlist).format(playList.name)
+                viewState.update { it.copy(error = text) }
+            } else {
+                val text = ContextCompat.getString(context, R.string.track_is_added).format(playList.name)
+                viewState.update { it.copy(error = text) }
             }
+
         }
     }
 

@@ -23,7 +23,7 @@
         android:theme="@style/Theme.PlaylistMaker"
         tools:targetApi="31">
         <activity
-            android:name=".player.ui.AudioPlayerActivity"
+            android:name=".player.ui.AudioPlayerFragment"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

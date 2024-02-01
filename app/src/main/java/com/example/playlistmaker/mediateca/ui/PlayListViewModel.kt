@@ -2,15 +2,15 @@ package com.example.playlistmaker.mediateca.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.playlistmaker.db.domain.PlayListRepository
 import com.example.playlistmaker.domain.PlayList
+import com.example.playlistmaker.domain.playlist.ObservePlayListsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class PlayListFragmentViewModel(
-    private val playListRepository: PlayListRepository
+class PlayListViewModel(
+    private val observePlayListsUseCase: ObservePlayListsUseCase
 ): ViewModel() {
 
     private val state = MutableStateFlow(ViewState())
@@ -18,7 +18,7 @@ class PlayListFragmentViewModel(
 
     init {
         viewModelScope.launch {
-            playListRepository.observePlayListWithTracks().collect{ items ->
+            observePlayListsUseCase().collect{ items ->
                 state.update { it.copy(playListItems = items) }
             }
         }

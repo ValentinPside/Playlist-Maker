@@ -11,7 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.playlistmaker.R
 import com.example.playlistmaker.databinding.MediatecaPlaylistsBinding
 import com.example.playlistmaker.extension.visibleOrInvisible
-import com.example.playlistmaker.mediateca.ui.PlayListFragmentViewModel
+import com.example.playlistmaker.mediateca.ui.PlayListViewModel
 import com.example.playlistmaker.mediateca.ui.playlist.PlayListAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -19,7 +19,7 @@ import org.koin.core.parameter.parametersOf
 
 class PlayListsFragment : Fragment(R.layout.mediateca_playlists) {
 
-    private val viewModel: PlayListFragmentViewModel by viewModel{ parametersOf() }
+    private val viewModel: PlayListViewModel by viewModel{ parametersOf() }
 
     private val binding by viewBinding(MediatecaPlaylistsBinding::bind)
     private lateinit var adapter: PlayListAdapter

@@ -14,7 +14,7 @@ import com.example.playlistmaker.domain.PlayList
 import com.example.playlistmaker.uttils.StringUtils
 
 class PlayListPreviewAdapter(
-    private val onClickPlayList: (Int) -> Unit
+    private val onClickPlayList: (PlayList) -> Unit
 ): ListAdapter<PlayList, PlayListPreviewAdapter.ViewHolder>(DiffUtil()) {
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
@@ -29,7 +29,7 @@ class PlayListPreviewAdapter(
 
             binding.title.text = item.name
             binding.count.text = "${item.tracks.size} ${StringUtils.getTracksAddition(item.tracks.size)}"
-            binding.root.setOnClickListener { onClickPlayList.invoke(item.id) }
+            binding.root.setOnClickListener { onClickPlayList.invoke(item) }
         }
     }
 
