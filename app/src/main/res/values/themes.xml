@@ -1,20 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PlaylistMaker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/main_col</item>
-        <item name="backgroundColor">@color/main_col</item>
-        <item name="background">@color/main_col</item>
-        <item name="colorPrimaryVariant">@color/main_col</item>
-        <item name="colorOnPrimary">@color/settings_icon_color</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/main_col</item>
-        <item name="colorSecondaryVariant">@color/main_col</item>
-        <item name="colorOnSecondary">@color/main_col</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <style name="Theme.PlaylistMaker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="background">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorAccent">@color/YP_Blue</item>
     </style>
+
     <style name="MainActivity" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
     </style>
     <style name="SettingsActivityTop" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
@@ -33,6 +26,7 @@
         <item name="android:background">@color/YP_Light_Gray</item>
         <item name="tint">@color/YP_Text_Gray</item>
         <item name="android:textColorHint">@color/YP_Text_Gray</item>
+        <item name="colorAccent">@color/YP_Blue</item>
     </style>
     <style name="rvLilTextStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:textColor">@color/YP_Text_Gray</item>
@@ -46,6 +40,48 @@
     </style>
     <style name="rvForwardStyle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="tint">@color/YP_Text_Gray</item>
+    </style>
+
+    <style name="PlayListInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/main_col</item>
+        <item name="hintTextColor">@color/main_col</item>
+        <item name="colorAccent">@color/main_col</item>
+        <item name="cursorColor">@color/main_col</item>
+    </style>
+
+    <style name="PlayListEditTextStyle" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="colorControlNormal">@color/main_col</item>
+        <item name="colorControlActivated">@color/main_col</item>
+    </style>
+
+    <style name="ColoredButton" parent="Widget.Material3.Button">
+        <item name="android:textColor">@drawable/btn_selector</item>
+    </style>
+
+    <style name="ModalBottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ModalBottomSheet</item>
+    </style>
+
+    <style name="ModalBottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearance">@drawable/rounded_dialog</item>
+    </style>
+
+    <style name="SettingsActivityIcon" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="tint">@color/settings_icon_color</item>
+        <item name="android:trackTint">@color/settings_icon_color</item>
+        <item name="android:thumbTint">@color/settings_icon_color</item>
+    </style>
+
+    <style name="bottomSheetStyle">
+        <item name="android:background">@drawable/rounded_dialog</item>
+    </style>
+
+    <style name="dividerStyle">
+        <item name="android:background">@drawable/create_button_background_gray</item>
+    </style>
+
+    <style name="PlayListCreateButton" parent="Theme.PlaylistMaker">
+        <item name="colorPrimary">@color/YP_Blue</item>
     </style>
 
 </resources>

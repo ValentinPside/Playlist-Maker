@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".settings.ui.SettingsFragment"
     android:theme="@style/SettingsActivityTop">
@@ -24,15 +25,21 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.appcompat.widget.SwitchCompat
-        style="@style/SettingsLinearLayout"
+        style="@style/SwitchStyle"
+        android:theme="@style/SwitchStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/switch2"
         android:paddingTop="@dimen/setting_switch_padding_top_and_bottom"
         android:paddingBottom="@dimen/setting_switch_padding_top_and_bottom"
         android:text="@string/dark_style"
         android:textAlignment="viewStart"
         android:textSize="@dimen/setting_but_text_size"
-        tools:ignore="UseSwitchCompatOrMaterialXml"
-        android:theme="@style/SettingsActivityIcon"/>
+        tools:checked="true"/>
+
+<!--    <item name="tint">@color/YP_White</item>-->
+<!--    <item name="android:trackTint">@color/YP_Blue</item>-->
+<!--    <item name="android:thumbTint">@color/YP_Blue</item>-->
 
     <LinearLayout
         style="@style/SettingsLinearLayout">

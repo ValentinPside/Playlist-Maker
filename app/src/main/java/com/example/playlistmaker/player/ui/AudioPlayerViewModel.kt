@@ -1,10 +1,18 @@
 package com.example.playlistmaker.player.ui
 
+import android.content.Context
 import android.media.MediaPlayer
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.playlistmaker.db.domain.FavoritesRepository
-import com.example.playlistmaker.mapTheme.domain.MapThemeRepository
+import com.example.playlistmaker.R
+import com.example.playlistmaker.data.TrackToPlayListMediator
+import com.example.playlistmaker.domain.PlayList
+import com.example.playlistmaker.domain.favorites.AddTrackToFavoritesUseCase
+import com.example.playlistmaker.domain.favorites.IsTrackAddedToFavoriteListUseCase
+import com.example.playlistmaker.domain.favorites.RemoveTrackFromFavoritesUseCase
+import com.example.playlistmaker.domain.playlist.AddTrackToPlayListUseCase
+import com.example.playlistmaker.domain.playlist.ObservePlayListsUseCase
 import com.example.playlistmaker.search.domain.models.Track
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -16,8 +24,14 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class AudioPlayerViewModel(
+    private val context: Context,
     private val track: Track,
-    private val favoritesRepository: FavoritesRepository
+    private val trackToPlayListMediator: TrackToPlayListMediator,
+    private val isTrackAddedToFavoriteListUseCase: IsTrackAddedToFavoriteListUseCase,
+    private val addTrackToFavoritesUseCase: AddTrackToFavoritesUseCase,
+    private val removeTrackFromFavoritesUseCase: RemoveTrackFromFavoritesUseCase,
+    private val observePlayListsUseCase: ObservePlayListsUseCase,
+    private val addTrackToPlayListUseCase: AddTrackToPlayListUseCase
 ) : ViewModel() {
 
     private val viewState = MutableStateFlow(ViewState(track))
@@ -29,8 +43,14 @@ class AudioPlayerViewModel(
     init {
         initMediaPlayer()
         viewModelScope.launch {
-            favoritesRepository.isExist(track.trackId).collect {isFavorite ->
+            isTrackAddedToFavoriteListUseCase(track.trackId).collect {isFavorite ->
                 viewState.update { it.copy(isFavorite = isFavorite) }
+            }
+        }
+
+        viewModelScope.launch {
+            observePlayListsUseCase().collect{ items ->
+                viewState.update { it.copy(playLists = items) }
             }
         }
     }
@@ -105,11 +125,33 @@ class AudioPlayerViewModel(
     fun onFavoriteClick() {
         viewModelScope.launch {
             if (!viewState.value.isFavorite){
-                favoritesRepository.addToFavorites(track)
+                addTrackToFavoritesUseCase(track)
             } else {
-                favoritesRepository.deleteFromFavorites(track)
+                removeTrackFromFavoritesUseCase(track)
             }
         }
+    }
+
+    fun addTrackToPlayList(playList: PlayList) {
+        viewModelScope.launch {
+            val result = addTrackToPlayListUseCase(track.trackId, playList.id)
+            if (result) {
+                val text = ContextCompat.getString(context, R.string.track_is_added_to_playlist).format(playList.name)
+                viewState.update { it.copy(error = text) }
+            } else {
+                val text = ContextCompat.getString(context, R.string.track_is_added).format(playList.name)
+                viewState.update { it.copy(error = text) }
+            }
+
+        }
+    }
+
+    fun clearError() {
+        viewState.update { it.copy(error = null) }
+    }
+
+    fun createNewPlayList() {
+        trackToPlayListMediator.addTrack(track.trackId)
     }
 
 }
@@ -117,7 +159,9 @@ class AudioPlayerViewModel(
 data class ViewState(
     val track: Track,
     val playerState: PlayerState = PlayerState.Default(),
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean = false,
+    val playLists: List<PlayList> = emptyList(),
+    val error: String? = null
 )
 
 

@@ -28,4 +28,5 @@
     <dimen name="corner_radius">2dp</dimen>
     <dimen name="audioplayer_description_text_size">13sp</dimen>
     <dimen name="big_corner_radius">16dp</dimen>
+    <dimen name="middle_corner_radius">8dp</dimen>
 </resources>
