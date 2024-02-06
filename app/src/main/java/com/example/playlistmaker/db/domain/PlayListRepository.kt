@@ -1,6 +1,7 @@
 package com.example.playlistmaker.db.domain
 
 import com.example.playlistmaker.domain.PlayList
+import com.example.playlistmaker.search.domain.models.Track
 import kotlinx.coroutines.flow.Flow
 
 interface PlayListRepository {
@@ -13,12 +14,14 @@ interface PlayListRepository {
 
     suspend fun update(playList: PlayList)
 
-    suspend fun delete(playList: PlayList)
+    suspend fun delete(playListId: Int)
 
-    suspend fun addTrackToPlaylist(trackId: Int, playListId: Int)
+    suspend fun addTrackToPlaylist(track: Track, playListId: Int)
 
     suspend fun isTrackAdded(trackId: Int, playListId: Int): Boolean
 
-    suspend fun getPlayListById(playListId: Int): PlayList
+    suspend fun getPlayListById(playListId: Int): Flow<PlayList?>
+
+    suspend fun removeTrackFromPlaylist(playlistId: Int, trackId: Int)
 
 }

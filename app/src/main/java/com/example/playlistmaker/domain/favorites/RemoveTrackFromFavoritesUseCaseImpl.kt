@@ -7,6 +7,6 @@ class RemoveTrackFromFavoritesUseCaseImpl(
     private val favoritesRepository: FavoritesRepository,
 ) : RemoveTrackFromFavoritesUseCase {
     override suspend fun invoke(track: Track) {
-        favoritesRepository.deleteFromFavorites(track)
+        favoritesRepository.deleteFromFavorites(track.copy(isFavorite = false))
     }
 }

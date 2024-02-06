@@ -182,12 +182,12 @@ class SearchFragment: androidx.fragment.app.Fragment() {
     }
 
     private fun initTrackList() {
-        searchAdapter = SearchAdapter(emptyList()) { onClick(it) }
+        searchAdapter = SearchAdapter(onClickListener = { onClick(it) })
         rvSearchTrack.adapter = searchAdapter
     }
 
     private fun initSearchHistoryTrackList() {
-        historyAdapter = SearchAdapter(arrayListOf()) { onClick(it) }
+        historyAdapter = SearchAdapter(onClickListener = { onClick(it) })
         historyRecyclerView.adapter = historyAdapter
         lifecycleScope.launch { searchViewModel.getSearchHistoryTrackList() }
     }

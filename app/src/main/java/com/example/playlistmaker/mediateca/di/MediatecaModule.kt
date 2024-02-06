@@ -2,6 +2,8 @@ package com.example.playlistmaker.mediateca.di
 
 import com.example.playlistmaker.domain.playlist.CreatePlayListUseCase
 import com.example.playlistmaker.domain.playlist.CreatePlayListUseCaseImpl
+import com.example.playlistmaker.domain.playlist.UpdatePlaylistUseCase
+import com.example.playlistmaker.domain.playlist.UpdatePlaylistUseCaseImpl
 import com.example.playlistmaker.mediateca.ui.PlayListViewModel
 import com.example.playlistmaker.mediateca.ui.new_playlist.NewPlaylistViewModel
 import com.example.playlistmaker.mediateca.ui.tracks.TracksViewModel
@@ -21,5 +23,9 @@ val newPlayListFragmentViewModelModule = module {
         CreatePlayListUseCaseImpl(get())
     }
 
-    viewModel { NewPlaylistViewModel(get(), get(), get()) }
+    single<UpdatePlaylistUseCase> {
+        UpdatePlaylistUseCaseImpl(get())
+    }
+
+    viewModel { parameters -> NewPlaylistViewModel(parameters.get(), get(), get(), get(), get(), get()) }
 }

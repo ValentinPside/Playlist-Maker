@@ -10,8 +10,10 @@ import com.example.playlistmaker.extension.DateUtils
 import com.example.playlistmaker.search.domain.models.Track
 
 class SearchAdapter(
-    var tracks : List<Track>,
-    private val onClickListener: (Track) -> Unit): RecyclerView.Adapter<SearchViewHolder> () {
+    var tracks : List<Track> = emptyList(),
+    private val onClickListener: (Track) -> Unit,
+    private val onLongClickListener: ((Track) -> Unit)? = null
+    ): RecyclerView.Adapter<SearchViewHolder> () {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.track_item, parent, false)
@@ -25,6 +27,13 @@ class SearchAdapter(
         itemView.setOnClickListener {
             onClickListener.invoke(track)
         }
+        onLongClickListener?.let {callback ->
+            itemView.setOnLongClickListener {
+                callback.invoke(track)
+                true
+            }
+        }
+
         holder.trackName.text = track.trackName
         holder.artistName.text = track.artistName
         holder.trackTime.text = track.trackTimeMillis?.let { DateUtils.formatTime(it) }

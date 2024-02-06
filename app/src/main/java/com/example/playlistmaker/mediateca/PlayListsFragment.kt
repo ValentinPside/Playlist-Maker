@@ -2,6 +2,7 @@ package com.example.playlistmaker.mediateca
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -43,8 +44,16 @@ class PlayListsFragment : Fragment(R.layout.mediateca_playlists) {
     }
 
     private fun setupPlayListRecyclerView() {
-        adapter = PlayListAdapter()
+        adapter = PlayListAdapter { openDetails(it.id) }
         binding.playListRecyclerView.adapter = adapter
+    }
+
+    private fun openDetails(playlistId: Int) {
+        val params = bundleOf(
+            "playlistId" to playlistId
+        )
+        findNavController()
+            .navigate(R.id.action_playListsFragment_to_playlistDetailFragment, params)
     }
 
     companion object {

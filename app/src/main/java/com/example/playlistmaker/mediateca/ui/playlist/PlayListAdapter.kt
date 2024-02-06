@@ -16,7 +16,9 @@ import com.example.playlistmaker.databinding.PlayListItemBinding
 import com.example.playlistmaker.domain.PlayList
 import com.example.playlistmaker.uttils.StringUtils
 
-class PlayListAdapter: ListAdapter<PlayList, PlayListAdapter.ViewHolder>(DiffUtil()) {
+class PlayListAdapter(
+    private val onClick: (PlayList) -> Unit
+): ListAdapter<PlayList, PlayListAdapter.ViewHolder>(DiffUtil()) {
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val binding by viewBinding { PlayListItemBinding.bind(view) }
@@ -31,6 +33,7 @@ class PlayListAdapter: ListAdapter<PlayList, PlayListAdapter.ViewHolder>(DiffUti
 
             binding.name.text = item.name
             binding.tracks.text = "${item.tracks.size} ${StringUtils.getTracksAddition(item.tracks.size)}"
+            binding.root.setOnClickListener { onClick.invoke(item) }
         }
     }
 

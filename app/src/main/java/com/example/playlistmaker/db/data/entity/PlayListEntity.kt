@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class PlayListEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val playListId: Int,
     val name: String,
     val description: String?,
     val uri: Uri?,

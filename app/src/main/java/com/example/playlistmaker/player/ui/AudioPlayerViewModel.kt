@@ -134,7 +134,7 @@ class AudioPlayerViewModel(
 
     fun addTrackToPlayList(playList: PlayList) {
         viewModelScope.launch {
-            val result = addTrackToPlayListUseCase(track.trackId, playList.id)
+            val result = addTrackToPlayListUseCase(track, playList.id)
             if (result) {
                 val text = ContextCompat.getString(context, R.string.track_is_added_to_playlist).format(playList.name)
                 viewState.update { it.copy(error = text) }
@@ -151,7 +151,7 @@ class AudioPlayerViewModel(
     }
 
     fun createNewPlayList() {
-        trackToPlayListMediator.addTrack(track.trackId)
+        trackToPlayListMediator.addTrack(track)
     }
 
 }

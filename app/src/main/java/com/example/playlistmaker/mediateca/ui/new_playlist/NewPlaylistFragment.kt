@@ -29,12 +29,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import java.io.File
 import java.io.FileOutputStream
+import java.util.UUID
 
 class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
 
     private val binding by viewBinding(FragmentNewPlaylistBinding::bind)
+    private val playlistId: Int by lazy { arguments?.getInt("playlistId") ?: -1 }
     private val viewModel: NewPlaylistViewModel by viewModel {
-        parametersOf()
+        parametersOf(playlistId)
     }
 
     private val picker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
@@ -53,6 +55,12 @@ class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
     }
 
     private fun onBackPressed() {
+
+        if (playlistId > -1) {
+            finish()
+            return
+        }
+
         val state = viewModel.observeUi().value
         if (state.createEnabled || state.image != null || state.description?.isNotEmpty() == true) {
             dialog.show()
@@ -67,21 +75,31 @@ class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observeUi()
         binding.playListNameEditText.onTextChanged { text -> viewModel.onNameChanged(text) }
         binding.playListDescriptionEditText.onTextChanged { text -> viewModel.setDescription(text) }
+
+        if (playlistId > -1) {
+            binding.appTitle.text = getString(R.string.edit_title)
+            binding.createBut.text = getString(R.string.save)
+        } else {
+            binding.appTitle.text = getString(R.string.new_playlist)
+            binding.createBut.text = getString(R.string.create)
+        }
+
+        observeUi()
+        binding.playListNameEditText.onTextChanged { text -> viewModel.onNameChanged(text) }
+
         binding.newPlayListImage.setOnClickListener {
             picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
         binding.toolbar.setNavigationOnClickListener {
-            val state = viewModel.observeUi().value
-            if (state.createEnabled || state.image != null || state.description?.isNotEmpty() == true) {
-                dialog.show()
-            } else {
-                finish()
-            }
+            onBackPressed()
         }
-        binding.createBut.setOnClickListener { viewModel.create() }
+        binding.createBut.setOnClickListener {
+            val name = binding.playListNameEditText.text?.toString().orEmpty()
+            val description = binding.playListDescriptionEditText.text?.toString().orEmpty()
+            viewModel.create(name, description)
+        }
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -99,6 +117,14 @@ class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
                 viewModel.observeUi().collect { state ->
                     binding.createBut.isEnabled = state.createEnabled
                     updateImage(state.image)
+
+                    if (state.name != binding.playListNameEditText.text?.toString()) {
+                        binding.playListNameEditText.setText(state.name)
+                    }
+
+                    if (state.description != binding.playListDescriptionEditText.text?.toString()) {
+                        binding.playListDescriptionEditText.setText(state.description)
+                    }
 
                     if (state.finish) {
                         finish()
@@ -125,7 +151,7 @@ class NewPlaylistFragment : Fragment(R.layout.fragment_new_playlist) {
             filePath.mkdirs()
         }
         //создаём экземпляр класса File, который указывает на файл внутри каталога
-        val file = File(filePath, "first_cover.jpg")
+        val file = File(filePath, "${UUID.randomUUID()}.jpg")
         // создаём входящий поток байтов из выбранной картинки
         val inputStream = requireActivity().contentResolver.openInputStream(uri)
         // создаём исходящий поток байтов в созданный выше файл
