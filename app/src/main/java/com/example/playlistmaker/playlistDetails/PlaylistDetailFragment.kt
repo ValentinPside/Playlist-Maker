@@ -24,7 +24,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import java.util.Locale
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class PlaylistDetailFragment : Fragment(R.layout.fragment_playlist_detail) {
@@ -41,6 +41,7 @@ class PlaylistDetailFragment : Fragment(R.layout.fragment_playlist_detail) {
         setupTracks()
         setupTracksBottomSheet()
         setupMore()
+
         binding.back.setOnClickListener { findNavController().popBackStack() }
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -56,6 +57,14 @@ class PlaylistDetailFragment : Fragment(R.layout.fragment_playlist_detail) {
                     adapter.tracks = state.tracks
                     adapter.notifyDataSetChanged()
 
+                    if(state.tracks.isEmpty()){
+                        binding.noTracksInPlayListTextView.visibility = View.VISIBLE
+                        binding.tracks.visibility = View.INVISIBLE
+                    }
+                    else{
+                        binding.noTracksInPlayListTextView.visibility = View.INVISIBLE
+                        binding.tracks.visibility = View.VISIBLE
+                    }
 
                     binding.title.text = state.title
                     binding.description.text = state.description
@@ -216,5 +225,4 @@ class PlaylistDetailFragment : Fragment(R.layout.fragment_playlist_detail) {
             .create()
             .show()
     }
-
 }
