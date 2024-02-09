@@ -5,7 +5,6 @@ import com.example.playlistmaker.data.TrackToPlayListMediator
 import com.example.playlistmaker.data.TrackToPlayListMediatorImpl
 import com.example.playlistmaker.db.data.AppDatabase
 import com.example.playlistmaker.db.data.FavoritesRepositoryImpl
-import com.example.playlistmaker.db.data.TrackDbConvertor
 import com.example.playlistmaker.db.data.dao.PlayListDao
 import com.example.playlistmaker.db.data.dao.TrackDao
 import com.example.playlistmaker.db.data.playList.PlayListRepositoryImpl
@@ -31,16 +30,13 @@ val dataModule = module {
         appDataBase.playListDao()
     }
 
-    factory {
-        TrackDbConvertor()
-    }
 
     single<FavoritesRepository> {
-        FavoritesRepositoryImpl(get<TrackDao>(), get<TrackDbConvertor>())
+        FavoritesRepositoryImpl(get<TrackDao>())
     }
 
     single<PlayListRepository> {
-        PlayListRepositoryImpl(get<PlayListDao>())
+        PlayListRepositoryImpl(get<PlayListDao>(), get())
     }
 
     single<TrackToPlayListMediator> {

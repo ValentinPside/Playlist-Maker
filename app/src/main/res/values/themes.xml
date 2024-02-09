@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/black</item>
         <item name="android:textColor">@color/black</item>
         <item name="colorAccent">@color/YP_Blue</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
     </style>
 
     <style name="MainActivity" parent="Theme.MaterialComponents.DayNight.DarkActionBar">

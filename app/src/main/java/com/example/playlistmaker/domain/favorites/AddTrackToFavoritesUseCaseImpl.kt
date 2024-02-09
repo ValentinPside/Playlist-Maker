@@ -10,7 +10,7 @@ class AddTrackToFavoritesUseCaseImpl(
 ) : AddTrackToFavoritesUseCase {
     override suspend fun invoke(track: Track) {
         withContext(Dispatchers.IO) {
-            favoritesRepository.addToFavorites(track)
+            favoritesRepository.addToFavorites(track.copy(isFavorite = true))
         }
     }
 }

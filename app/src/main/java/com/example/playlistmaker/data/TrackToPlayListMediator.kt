@@ -1,11 +1,12 @@
 package com.example.playlistmaker.data
 
+import com.example.playlistmaker.search.domain.models.Track
 import kotlinx.coroutines.flow.StateFlow
 
 interface TrackToPlayListMediator {
 
-    fun addTrack(trackId: Int?)
+    fun addTrack(track: Track?)
 
-    fun observe(): StateFlow<Int?>
+    fun observe(): StateFlow<Track?>
 
 }

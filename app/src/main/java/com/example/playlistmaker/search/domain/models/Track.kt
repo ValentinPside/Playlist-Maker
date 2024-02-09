@@ -2,7 +2,7 @@ package com.example.playlistmaker.search.domain.models
 
 import android.os.Parcel
 import android.os.Parcelable
-import java.util.*
+import java.util.Date
 
 data class Track(
     val trackName: String?,
@@ -27,7 +27,8 @@ data class Track(
         parcel.readLong(),
         parcel.readString(),
         parcel.readInt(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readInt() == 1
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -43,6 +44,7 @@ data class Track(
         parcel.writeString(artworkUrl100)
         parcel.writeInt(trackId)
         parcel.writeString(previewUrl)
+        parcel.writeInt( if (isFavorite) 1 else 0)
     }
 
     override fun describeContents(): Int {

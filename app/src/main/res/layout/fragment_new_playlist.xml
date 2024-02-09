@@ -16,10 +16,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="@string/new_playlist"
+            android:text=""
             android:textSize="22sp" />
     </androidx.appcompat.widget.Toolbar>
 
